@@ -1,9 +1,16 @@
-import app from "./app";
+import express from "express";
+import { config } from "./config/default";
 
-const port = 8081;
+import { initializeApp } from "./app";
+import log from "./logger";
+
+const port = config.get("port");
+
+const app = express();
+
+initializeApp(app);
 
 // Server setup
 app.listen(port, () => {
-    console.log(`TypeScript with Express
-         http://localhost:${port}/`);
+    log.info(`Express server started on http://localhost:${port}/`);
 });
