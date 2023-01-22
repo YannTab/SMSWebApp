@@ -1,4 +1,5 @@
 import { NextFunction, Request, Response } from "express";
+import { listUserMessagesController } from "../controllers/messages/list-user-messages";
 
 var express = require('express');
 var router = express.Router();
@@ -12,5 +13,8 @@ router.get('/', function(req: Request, res: Response, next: NextFunction) {
     }
   })
 });
+
+/* GET user messages */
+router.get('/messages', listUserMessagesController);
 
 module.exports = router;
