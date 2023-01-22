@@ -22,7 +22,7 @@ yarn install
 ```
 
 3. Create a copy of `.env.example` and rename it to `.env`. 
-Change the configuration in .env as needed on your local machine
+Change the configuration in `.env` as needed on your local machine
 
 3.  Launch Project in development mode
 ```bash
