@@ -1,5 +1,5 @@
 import express, { NextFunction, Request, Response, Express } from "express";
-import createError from "http-errors";
+// import createError from "http-errors";
 import path from "path";
 import cookieParser from "cookie-parser";
 import logger from "morgan";
@@ -22,9 +22,9 @@ export const initializeApp = (app: Express) => {
   app.use('/users', usersRouter);
 
   // catch 404 and forward to error handler
-  app.use(function (req, res, next) {
-    next(createError(404));
-  });
+  // app.use(function (req, res, next) {
+  //   next(createError(404));
+  // });
 
   // error handler
   app.use(function (err: any, req: Request, res: Response, next: NextFunction) {
