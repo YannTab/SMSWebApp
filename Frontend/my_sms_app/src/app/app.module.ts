@@ -7,14 +7,9 @@ import { ReactiveFormsModule } from "@angular/forms";
 
 import { RouterModule, Routes } from "@angular/router";
 
-import { MatInputModule } from '@angular/material/input';
-import { MatButtonModule } from '@angular/material/button';
-import { MatSelectModule } from '@angular/material/select';
-import { MatRadioModule } from '@angular/material/radio';
-import { MatCardModule } from '@angular/material/card';
+
 import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
-import { MatIconModule } from '@angular/material/icon';
 import { RecoverPasswordComponent } from './recover-password/recover-password.component';
 import { RecoverPasswordConfirmComponent } from './recover-password-confirm/recover-password-confirm.component';
 import { RecoverDialogComponent } from './recover-dialog/recover-dialog.component';
@@ -46,12 +41,6 @@ import { SmsComponent } from './sms/sms.component';
     // import HttpClientModule after BrowserModule.
     HttpClientModule,
     ReactiveFormsModule,
-    MatInputModule,
-    MatButtonModule,
-    MatSelectModule,
-    MatRadioModule,
-    MatCardModule,
-    MatIconModule,
     AppRoutingModule,  
     RouterModule,
   ],
