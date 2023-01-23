@@ -147,6 +147,7 @@ form{
 	margin-bottom: 4px;
 }
 
+
 a{
 	display: block;
 	text-align: right;
@@ -167,7 +168,7 @@ a:hover{
 	border-radius: 25px;
 	outline: none;
 	border: none;
-	background-image: linear-gradient(to right, #0f25d0, #5044d4, #1a17d8);
+	background-color:#0f25d0;
 	background-size: 200%;
 	font-size: 1.2rem;
 	color: #fff;

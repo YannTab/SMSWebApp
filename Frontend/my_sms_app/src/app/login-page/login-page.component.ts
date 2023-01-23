@@ -27,5 +27,8 @@ export class LoginPageComponent {
   recover() {
     this.router.navigate(['/recover']);
   }
+  signup(){
+    this.router.navigate(['/createAccount']);
+  }
 
 }
