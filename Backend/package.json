@@ -17,7 +17,9 @@
     "express": "~4.16.1",
     "http-errors": "~1.6.3",
     "morgan": "~1.9.1",
-    "pino": "^8.8.0"
+    "pino": "^8.8.0",
+    "sequelize": "^6.28.0",
+    "sqlite3": "^5.1.4"
   },
   "devDependencies": {
     "@types/cookie-parser": "^1.4.3",
