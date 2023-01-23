@@ -12,6 +12,7 @@ import { ConsultContactComponent } from './consult-contact/consult-contact.compo
 import { SmsComponent } from './sms/sms.component';
 import { ConsultSmsComponent } from './consult-sms/consult-sms.component';
 import { CardComponent } from './card/card.component';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [
@@ -28,6 +29,7 @@ import { CardComponent } from './card/card.component';
   ],
   imports: [
     BrowserModule,
+    RouterModule,
     AppRoutingModule
   ],
   providers: [],
