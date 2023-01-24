@@ -5,7 +5,7 @@ export const listUserMessagesController = function(req: Request, res: Response, 
     getMessages();
     res.status(200).json({
         data: {
-            text: "This is the messages page",
+            text: "This is the message pages",
             success: true
         }
     })
