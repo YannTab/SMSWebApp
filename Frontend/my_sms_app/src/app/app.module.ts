@@ -13,6 +13,8 @@ import { SmsComponent } from './sms/sms.component';
 import { ConsultSmsComponent } from './consult-sms/consult-sms.component';
 import { CardComponent } from './card/card.component';
 import { RouterModule } from '@angular/router';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { BodyComponent } from './body/body.component';
 
 @NgModule({
   declarations: [
@@ -25,12 +27,14 @@ import { RouterModule } from '@angular/router';
     ConsultContactComponent,
     SmsComponent,
     ConsultSmsComponent,
-    CardComponent
+    CardComponent,
+    BodyComponent,
   ],
   imports: [
     BrowserModule,
     RouterModule,
-    AppRoutingModule
+    AppRoutingModule,
+    BrowserAnimationsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

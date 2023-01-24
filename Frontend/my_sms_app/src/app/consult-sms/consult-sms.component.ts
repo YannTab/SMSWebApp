@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output } from '@angular/core';
+import { MessageData } from './data-msg';
 
 @Component({
   selector: 'app-consult-sms',
@@ -11,5 +12,7 @@ export class ConsultSmsComponent implements OnInit {
 
   ngOnInit(): void {
   }
+  @Output()
+  msgData = MessageData;
 
 }

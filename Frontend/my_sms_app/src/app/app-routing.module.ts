@@ -7,25 +7,21 @@ import { ImportContactComponent } from './import-contact/import-contact.componen
 import { LoginComponent } from './login/login.component';
 import { RecoverPasswordComponent } from './recover-password/recover-password.component';
 import { SaveContactComponent } from './save-contact/save-contact.component';
+import { ConsultContactComponent } from './consult-contact/consult-contact.component';
 import { SmsComponent } from './sms/sms.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: 'login', pathMatch: 'full' },
+  { path: '', redirectTo: '', pathMatch: 'full' },
   { path: 'login', component: LoginComponent },
   { path: 'createAccount', component: CreateAccountComponent },
   { path: 'recoverPassword', component: RecoverPasswordComponent },
-
-  { 
-    path: 'card',
-    component: CardComponent,
-    children: [
-      { path: 'saveContact', component: SaveContactComponent },
-      { path: 'importContact', component: ImportContactComponent },
-      { path: 'consultContact', component: ImportContactComponent },
-      { path: 'sms', component: SmsComponent },
-      { path: 'consultSms', component: ConsultSmsComponent },
-    ],
-  },
+  
+  { path: 'consultSms', component: ConsultSmsComponent },
+  { path: 'sms', component: SmsComponent },
+  { path: 'saveContact', component: SaveContactComponent },
+  { path: 'importContact', component: ImportContactComponent },
+  { path: 'consultContact', component: ConsultContactComponent },
+  {path: 'card',component: CardComponent,},
 ];
 
 @NgModule({
