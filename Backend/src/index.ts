@@ -8,6 +8,7 @@ import { createDbConnection } from "./db/connect";
 import { synchronizeDB } from "./db/sync";
 import logger from "./logger";
 
+
 const port = config.get("port");
 
 const app = express();
@@ -23,4 +24,4 @@ app.listen(port, () => {
 db.instance = createDbConnection();
 import("./models").then(models => {
     synchronizeDB(models.default);
-})
+});
