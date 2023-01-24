@@ -3,7 +3,6 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { LoginComponent } from './login/login.component';
 import { CreateAccountComponent } from './create-account/create-account.component';
 import { RecoverPasswordComponent } from './recover-password/recover-password.component';
 import { SaveContactComponent } from './save-contact/save-contact.component';
@@ -19,7 +18,6 @@ import { BodyComponent } from './body/body.component';
 @NgModule({
   declarations: [
     AppComponent,
-    LoginComponent,
     CreateAccountComponent,
     RecoverPasswordComponent,
     SaveContactComponent,
