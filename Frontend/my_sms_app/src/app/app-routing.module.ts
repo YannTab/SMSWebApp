@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
+import { LoginPageComponent } from './login-page/login-page.component';
 import { CreateAccountComponent } from './create-account/create-account.component';
 import { RouterModule, Routes } from '@angular/router';
 import { RecoverPasswordComponent } from './recover-password/recover-password.component';
@@ -14,13 +15,14 @@ import { SmsComponent } from './sms/sms.component';
 const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
   { path: 'createAccount', component: CreateAccountComponent },
+  { path: 'login', component: LoginPageComponent },
   { path: 'recoverPassword', component: RecoverPasswordComponent },
   { path: 'consultSms', component: ConsultSmsComponent },
   { path: 'sms', component: SmsComponent },
   { path: 'saveContact', component: SaveContactComponent },
   { path: 'importContact', component: ImportContactComponent },
   { path: 'consultContact', component: ConsultContactComponent },
-  {path: 'card',component: CardComponent,},
+  {path: 'card',component: CardComponent},
 ];
 
 @NgModule({

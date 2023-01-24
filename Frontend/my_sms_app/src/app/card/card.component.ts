@@ -1,6 +1,7 @@
 import { animate, keyframes, style, transition, trigger } from '@angular/animations';
 import { Component, EventEmitter, HostListener, OnInit, Output } from '@angular/core';
 import { navbarData } from './nav-data';
+import { Router } from '@angular/router';
 
 
 interface SideNavToggle{
@@ -41,7 +42,8 @@ interface SideNavToggle{
 })
 export class CardComponent implements OnInit {
 
-  constructor() { }
+  constructor( public router:Router) { 
+   }
 
   
 
@@ -49,6 +51,9 @@ export class CardComponent implements OnInit {
   collapsed = false;
   screenWidth = 0;
   navData = navbarData;
+  url = false;
+  
+  
 
   @HostListener('window:resize', ['$event'])
   onResize(event: any){
@@ -61,15 +66,34 @@ export class CardComponent implements OnInit {
 
   ngOnInit(): void {
     this.screenWidth = window.innerWidth;
+    
   }
 
   toggleCollapse(): void{
     this.collapsed = !this.collapsed;
     this.onToggleSideNav.emit({collapsed: this.collapsed, screenWidth: this.screenWidth});
+    
+  }
+
+  urlView(): void{
+    console.log(this.router.url);
+  }
+
+  activeSide(): boolean{
+    if( this.router.url == '/login' || this.router.url == '/createAccount' ){
+      return false;
+    }else{
+      this.url = true;
+      return true;
+    };
+    
   }
 
   closeSidenav(): void{
     this.collapsed = false;
     this.onToggleSideNav.emit({collapsed: this.collapsed, screenWidth: this.screenWidth});
   }
+
+  
+
 }

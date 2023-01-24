@@ -1,23 +1,21 @@
-<div className="student">
-    <div className="frame">
-        <div className="show-search">
-            <div className="search">Search : <input type="text" placeholder="Search" /></div>
-        </div>
-        <div className="table-div">
-            <table className="table">
-                <tr>
-                    <th>No.</th>
-                    <th>Contact</th>
-                    <th>Message</th>
-                    <th>Actions</th>
-                </tr>
-                <tr *ngFor="let data of msgData">
-                    <td>{{data.id}}</td>
-                    <td>{{data.contact}}</td>
-                    <td>{{data.message}}</td>
-                    <td><span className="edit"><a href="">Edit</a></span><span className="delete"><a href="">Delete</a></span></td>
-                </tr>
-            </table>
-        </div> 
+<div className="frame">
+    <div className="show-search">
+        <div className="search">Search : <input type="text" placeholder="Search" /></div>
     </div>
+    <div className="table-div">
+        <table className="table">
+            <tr>
+                <th>No.</th>
+                <th>Name</th>
+                <th>Message</th>
+                <th>Actions</th>
+            </tr>
+            <tr *ngFor="let data of msgData">
+                <td>{{data.id}}</td>
+                <td>{{data.name}}</td>
+                <td>{{data.message}}</td>
+                <td><span className="edit"><a href="">Edit</a></span><span className="delete"><a href="">Delete</a></span></td>
+            </tr>
+        </table>
+    </div> 
 </div>
