@@ -1,6 +1,8 @@
 import { NextFunction, Request, Response } from "express";
+import { userInfo } from "os";
 import { listUserMessagesController } from "../controllers/messages/list-user-messages";
-
+import { saveUserController } from "../controllers/users/users";
+import { User } from "../models/User";
 var express = require('express');
 var router = express.Router();
 
@@ -13,6 +15,9 @@ router.get('/', function(req: Request, res: Response, next: NextFunction) {
     }
   })
 });
+
+/** record a new user in the database */
+router.post('/save',saveUserController);
 
 /* GET user messages */
 router.get('/messages', listUserMessagesController);
