@@ -13,17 +13,24 @@
 
         <div class="login-content">
             <form >
-                <img src="../../../assets/avatar.svg">
-                <h2 class="title">Recover</h2>
+                <h2 class="title">Modify password</h2>
                 <div class="input-div one">
                     <div class="i">
                         <i class="fas fa-user"></i>
                     </div>
                     <div class="div">
-                        <input type="text" placeholder="Phone number" class="input" formControlName="number">
+                        <input type="password" placeholder="password" class="input" formControlName="password">
                     </div>
                 </div>
-                <button type="submit" class="btn" (click)="recover()">Retreive</button>
+                <div class="input-div one">
+                    <div class="i">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <div class="div">
+                        <input type="password" placeholder="Confirm password" class="input" formControlName="passwordConf">
+                    </div>
+                </div>
+                <button type="submit" class="btn">Modify</button>
             </form>
         </div>
     </div>
