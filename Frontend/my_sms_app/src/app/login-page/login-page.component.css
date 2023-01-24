@@ -2,14 +2,11 @@
 	padding: 0;
 	margin: 0;
 	box-sizing: border-box;
-	
 }
 
 body{
     font-family: 'Poppins', sans-serif;
     overflow: hidden;
-	
-	
 }
 
 .wave{
@@ -150,7 +147,6 @@ form{
 	margin-bottom: 4px;
 }
 
-
 a{
 	display: block;
 	text-align: right;
@@ -171,7 +167,25 @@ a:hover{
 	border-radius: 25px;
 	outline: none;
 	border: none;
-	background-color:rgb(53, 152, 219);
+	background-image: linear-gradient(to right, #0f25d0, #5044d4, #1a17d8);
+	background-size: 200%;
+	font-size: 1.2rem;
+	color: #fff;
+	font-family: 'Poppins', sans-serif;
+	text-transform: uppercase;
+	margin: 1rem 0;
+	cursor: pointer;
+	transition: .5s;
+}
+
+.btn2{
+	display: block;
+	width: 100%;
+	height: 50px;
+	border-radius: 25px;
+	outline: none;
+	border: none;
+	background-image: linear-gradient(to right, #d93d0e, #97351d, #f85523);
 	background-size: 200%;
 	font-size: 1.2rem;
 	color: #fff;
@@ -182,6 +196,10 @@ a:hover{
 	transition: .5s;
 }
 .btn:hover{
+	background-position: right;
+}
+
+.btn2:hover{
 	background-position: right;
 }
 

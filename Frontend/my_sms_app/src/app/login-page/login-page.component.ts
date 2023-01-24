@@ -1,6 +1,9 @@
 import { Component } from '@angular/core';
-import { FormBuilder, Validators } from '@angular/forms';
+import { FormBuilder, Validators, FormGroup, FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
+
+
+
 
 @Component({
   selector: 'app-login-page',
@@ -27,8 +30,13 @@ export class LoginPageComponent {
   recover() {
     this.router.navigate(['/recover']);
   }
-  signup(){
+
+  signUp() {
     this.router.navigate(['/createAccount']);
+  }
+
+  signIn() {
+    this.router.navigate(['/card'])
   }
 
 }

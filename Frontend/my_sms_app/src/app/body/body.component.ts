@@ -11,6 +11,11 @@ export class BodyComponent {
   @Input() collapsed = false;
   @Input() screenWidth = 1;
 
+  constructor() {}
+
+  ngOnInit(): void {
+  }
+
   getNavbarClass(): string{
     let styleClass = '';
     if(this.collapsed && this.screenWidth > 768){
@@ -30,5 +35,6 @@ export class BodyComponent {
     }
     return styleClass;
   }
+  
 
 }

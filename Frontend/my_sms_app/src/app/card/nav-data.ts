@@ -1,32 +1,28 @@
 export const navbarData = [
     {
         routeLink: 'sms',
-        icon: 'fa fa-paper-plane',
+        icon: 'question_answer',
         label: 'New messages'
     },
     {
         routeLink: 'consultSms',
-        icon: 'fa fa-comments',
+        icon: 'article',
         label: 'Consult Messages'
     },
     {
         routeLink: 'consultContact',
-        icon: 'fa fa-address-book',
+        icon: 'supervisor_account',
         label: 'Directory'
     },
     {
         routeLink: 'saveContact',
-        icon: 'fa fa-download',
+        icon: 'contacts',
         label: 'Save Contact'
     },
     {
         routeLink: 'importContact',
-        icon: 'fa fa-download',
+        icon: 'add',
         label: 'Add Contact'
     },
-    {
-        routeLink: 'createAccount',
-        icon: 'fa fa-sign-out',
-        label: 'Logout'
-    },
+   
 ];

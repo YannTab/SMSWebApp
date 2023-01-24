@@ -1,0 +1,45 @@
+main{
+  width: 600px;
+  display: flex;
+  align-self: center;
+}
+.msg-right{
+  display: block;
+  position: relative;
+}
+.msg-left{
+  display: block;
+  height: 50px;
+  position: relative;
+}
+.msg-left div{
+  display: flex;
+  justify-content: center;
+  width: 150px;
+  height: 50px;
+  position: absolute;
+  right:52px;
+  border-radius: 5px;
+  background-color: lightblue;
+  color: white;
+  text-align: center;
+  padding-top: 15px;
+  padding-left: 10px;
+}
+.msg-right div{
+  position: absolute;
+  width: 150px;
+  height: 50px;
+  border-radius: 5px;
+  background-color: aqua;
+  text-align: center;
+  padding-top: 15px;
+  color: white;
+  left: -70px;
+  
+}
+.rel{
+  position: relative;
+  height: 500;
+  margin: 100px;
+}

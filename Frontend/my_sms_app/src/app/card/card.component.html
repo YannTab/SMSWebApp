@@ -7,14 +7,27 @@
         </button>
     </div>
     <ul class="sidenav-nav">
-    <li class=" sidenav-nav-item" *ngFor="let data of navData" (click)="urlView()">
-        <a class="sidenav-nav-link" [routerLink]="[data.routeLink]"
-            routerLinkActive="active"
-            [routerLinkActiveOptions]="{exact: true}" 
-        >
-            <i class="sidenav-link-icon" [class]="data.icon"></i>
-            <span class="sidenav-link-text" @fadeInOut *ngIf="collapsed">{{data.label}}</span>
-        </a>
-    </li>
+        <li class=" sidenav-nav-item" *ngFor="let data of navData" (click)="urlView()">
+            <a class="sidenav-nav-link" [routerLink]="[data.routeLink]" routerLinkActive="active"
+                [routerLinkActiveOptions]="{exact: true}">
+                <mat-icon class="sidenav-link-icon">{{data.icon}}</mat-icon>
+                <span class="sidenav-link-text" @fadeInOut *ngIf="collapsed">{{data.label}}</span>
+            </a>
+        </li>
+        <br>
+        <br>
+        <br>
+        <br>
+        <li class=" sidenav-nav-item" (click)="urlView()">
+            <a class="sidenav-nav-link" routerLink="/login" routerLinkActive="active"
+                routerLinkActiveOptions="{exact: true}">
+                <mat-icon class="sidenav-link-icon">exit_to_app</mat-icon>
+                <span class="sidenav-link-text" @fadeInOut *ngIf="collapsed">Logout</span>
+            </a>
+        </li>
     </ul>
+</div>
+
+<div class="content">
+    <router-outlet></router-outlet>
 </div>

@@ -1,5 +1,5 @@
- import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl } from '@angular/forms';
+import { Component, OnInit } from '@angular/core';
+import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
 @Component({
   selector: 'app-create-account',
   templateUrl: './create-account.component.html',
@@ -7,9 +7,19 @@ import { FormGroup, FormControl } from '@angular/forms';
 })
 export class CreateAccountComponent implements OnInit {
 
-  
+  signForm = this.fb.group({
+    firstName: ['', Validators.required],
+    lastName: ['', Validators.required],
+    phoneNumber: ['', Validators.required],
+    email: ['', Validators.email],
+    password: ['', Validators.required],
+    confPassword: ['', Validators.required],
+  });
 
-  constructor() { }
+
+  constructor(
+    private fb: FormBuilder,
+  ) { }
 
   ngOnInit(): void {
   }

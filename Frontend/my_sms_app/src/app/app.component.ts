@@ -13,11 +13,4 @@ interface SideNavToggle{
 export class AppComponent {
   title = 'my_sms_app';
 
-  isSideNavCollapsed = false;
-  screenWidth = 0;
-  
-  onToggleSideNav(data: SideNavToggle): void{
-      this.screenWidth = data.screenWidth;
-      this.isSideNavCollapsed = data.collapsed;
-  }
 }

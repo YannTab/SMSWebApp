@@ -1,0 +1,148 @@
+*{
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+	list-style-type: none;
+	text-decoration: none;
+	font-family: 'verdana';
+}
+
+.content{
+	transition: margin-left 300ms;
+	margin-left: 22%;
+    
+}
+
+
+header{
+	background-color: #fff;
+	display: flex;
+	justify-content: space-between;
+	padding: 1rem;
+	box-shadow: 2px 5px 15px 2px rgb(0 0 0 / 10%);
+	position: fixed;
+	left: 19%;
+	width: calc(100% - 22%);
+	top: 50px;
+	transition: left 300ms;
+   
+
+}
+
+.accueil{
+	font-size: 1.5rem;
+	padding-right: 1rem;
+	margin-left: 15px;
+	color: #85aff2;
+    
+}
+.search-wrapp{
+	border: 1px solid #85aff2;
+	border-radius: 20px;
+	height: 38px;
+	display: flex;
+	align-items: center;
+	overflow-x: hidden;
+}
+.search-wrapp input{
+	height: 100%;
+	padding: .5rem;
+	border: none;
+	outline: none;
+}
+.search-wrapp span{
+	display: inline-block;
+	padding: 0rem 1rem;
+	font-size: 1.5rem;
+	color: #85aff2;
+}
+
+.user-wrapp{
+	display: flex;
+	align-items: center;
+}
+
+
+
+
+
+
+.corps{
+	
+	justify-content: center;
+    padding: 100px;
+    margin: 100px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-weight: bold;
+    margin-top: 3.5rem;
+	display: grid;
+	grid-gap: 2rem;
+	grid-template-columns: 69% auto;
+    align-items: center;
+}
+.contact{
+	background-color: #fff;
+	border-radius: 10px;
+    
+}
+.header-case, .body-case{
+	padding: .5rem
+}
+.header-case{
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+
+}
+.header-case button{
+	background-color: #85aff2;
+	border-radius: 10px;
+	color: #fff;
+	font-size: .8rem;
+	padding: .5rem 1rem;
+	border: none;
+	cursor: pointer;
+}
+.btn{
+	background-color: #85aff2;
+	border-radius: 10px;
+	color: #fff;
+	font-size: .8rem;
+	padding: .5rem 1rem;
+	border: none;
+	cursor: pointer;
+	margin-bottom: 1rem;
+	margin-left: 5px;
+
+}
+table{
+	border-collapse: collapse;
+}
+thead tr{
+	border-top: 1px solid #ccc;
+	border-bottom: 1px solid #ccc;
+}
+thead td{
+	font-weight: 700;
+}
+td{
+	padding: .5rem 1rem;
+}
+
+.tableau{
+	overflow-x: auto;
+	width: 100%;
+}
+.all-users{
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: .5rem .7rem;
+
+}
+
+
+

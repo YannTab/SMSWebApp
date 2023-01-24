@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Validators, FormBuilder } from '@angular/forms';
 
 @Component({
   selector: 'app-recover-password-confirm',
@@ -7,7 +8,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RecoverPasswordConfirmComponent implements OnInit {
 
+  Form = this.fb.group({
+    code: ['', Validators.required],
+    password: ['', Validators.required],
+    passwordConf: ['', Validators.required]
+  });
+
   constructor(
+    private fb: FormBuilder,
     
   ) { }
 

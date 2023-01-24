@@ -10,16 +10,17 @@
 
 <body>
     <div class="container">
+
         <div class="login-content">
-            <form >
-                <img src="../../../assets/avatar.svg">
+            <form [formGroup]="signForm">
+                <img src="../../../assets/images/avatar.svg">
                 <h2 class="title">Sign Up</h2>
                 <div class="input-div one">
                     <div class="i">
                         <i class="fas fa-user"></i>
                     </div>
                     <div class="div">
-                        <input type="text" placeholder="First Name" class="input" formControlName="First Name">
+                        <input type="text" placeholder="First Name" class="input" formControlName="firstName">
                     </div>
                 </div>
                 <div class="input-div one">
@@ -27,7 +28,7 @@
                         <i class="fas fa-user"></i>
                     </div>
                     <div class="div">
-                        <input type="text" placeholder="Last Name" class="input" formControlName="Last Name">
+                        <input type="text" placeholder="Last Name" class="input" formControlName="lastName">
                     </div>
                 </div>
                 <div class="input-div one">
@@ -35,7 +36,16 @@
                         <i class="fas fa-user"></i>
                     </div>
                     <div class="div">
-                        <input type="number" placeholder="Phone number" class="input" formControlName="Phone number">
+                        <input type="number" placeholder="Phone number" class="input" formControlName="phoneNumber">
+                    </div>
+                </div>
+
+                <div class="input-div one">
+                    <div class="i">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <div class="div">
+                        <input type="email" placeholder="email" class="input" formControlName="email">
                     </div>
                 </div>
 
@@ -53,11 +63,11 @@
                         <i class="fas fa-user"></i>
                     </div>
                     <div class="div">
-                        <input type="email" placeholder="email" class="input" formControlName="email">
+                        <input type="password" placeholder="Confirm password" class="input" formControlName="confPassword">
                     </div>
                 </div>
                 
-                <button type="submit" class="btn" >Register</button>
+                <button type="submit" class="btn" [disabled]="!signForm.valid">Register</button>
             </form>
         </div>
     </div>
