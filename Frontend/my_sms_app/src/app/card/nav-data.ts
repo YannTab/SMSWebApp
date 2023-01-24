@@ -1,13 +1,18 @@
 export const navbarData = [
     {
+        routeLink: 'sms',
+        icon: 'fa fa-paper-plane',
+        label: 'New messages'
+    },
+    {
         routeLink: 'consultSms',
         icon: 'fa fa-comments',
         label: 'Consult Messages'
     },
     {
-        routeLink: 'sms',
-        icon: 'fa fa-paper-plane',
-        label: 'Send messages'
+        routeLink: 'consultContact',
+        icon: 'fa fa-address-book',
+        label: 'Directory'
     },
     {
         routeLink: 'saveContact',
@@ -18,11 +23,6 @@ export const navbarData = [
         routeLink: 'importContact',
         icon: 'fa fa-download',
         label: 'Add Contact'
-    },
-    {
-        routeLink: 'consultContact',
-        icon: 'fa fa-address-book',
-        label: 'Directory'
     },
     {
         routeLink: 'createAccount',
