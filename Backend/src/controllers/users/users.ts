@@ -10,10 +10,19 @@ export const saveUserController = function(req: Request, res: Response, next:Nex
     })
     next()
 }
-export const editUserController = function(req: Request, res: Response,next:NextFunction){
+
+export const getUserController = function(req: Request, res: Response,next:NextFunction){
     const {id} = req.params;
     const user = editUser(id);
     res.json(user)
+    next()
+}
+export const editUserController = function(req: Request, res: Response,next:NextFunction){
+    editUser(req.body);
+    res.status(200).json({
+        message : "user updated successfully",
+        data : User.findByPk(req.body.id)
+    })
     next()
 }
 export const deleteUserController = function(req: Request, res: Response,next:NextFunction){

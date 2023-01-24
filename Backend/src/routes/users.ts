@@ -1,7 +1,7 @@
 import { NextFunction, Request, Response } from "express";
 import { userInfo } from "os";
 import { listUserMessagesController } from "../controllers/messages/list-user-messages";
-import { deleteUserController, editUserController, saveUserController } from "../controllers/users/users";
+import { deleteUserController, editUserController, getUserController, saveUserController } from "../controllers/users/users";
 import { User } from "../models/User";
 import { saveUser } from "../services/users/users";
 var express = require('express');
@@ -22,7 +22,9 @@ router.get('/', function(req: Request, res: Response, next: NextFunction) {
 router.post('/save', saveUserController);
 
 /*get informations of the user who wants to update his details */
-router.get('/edit/:id',editUserController);
+router.get('/getUser/:id',getUserController);
+
+router.get('/edit',editUserController);
 
 /*delete the current user */
 router.get('/delete/:id',deleteUserController);
