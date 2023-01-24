@@ -83,7 +83,6 @@ export class CardComponent implements OnInit {
     if( this.router.url == '/login' || this.router.url == '/createAccount' ){
       return false;
     }else{
-      this.url = true;
       return true;
     };
     
