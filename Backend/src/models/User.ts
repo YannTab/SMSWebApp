@@ -29,7 +29,7 @@ export const User = db.instance!.define<User>('User', {
     }, 
     password: {
         type: DataTypes.STRING,
-        allowNull: true
+        allowNull: false
     }, 
     email: {
         type: DataTypes.STRING,
@@ -41,10 +41,10 @@ export const User = db.instance!.define<User>('User', {
     }
 });
 
-// User to Messages One to Many
+//User to Messages One to Many
 User.hasMany(Message, {foreignKey:'UserId'})
 Message.belongsTo(User)
 
-// User to contacts Many to Many
+ //User to contacts Many to Many
 User.hasMany(Contact, {foreignKey: 'UserId'})
 Contact.belongsTo(User)

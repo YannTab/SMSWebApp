@@ -2,6 +2,5 @@ node_modules/
 package-lock.json
 .env
 build/
-database/*
 !database/.gitkeep
 yarn-error.log
