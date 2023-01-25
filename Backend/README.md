@@ -1,6 +1,11 @@
 # SMSWebApp Backend
 This is the backend for the SMS Sending Web Application
 
+#### Make sure to cd into the backend folder before executing any commands described in this file
+```bash
+cd Backend
+```
+
 ## Setup and Launch Project in Dev Mode
 
 Preferably use yarn package manager instead of npm
