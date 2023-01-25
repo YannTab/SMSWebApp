@@ -1,1 +1,30 @@
-<p>login works!</p>
+<div class="content-login d-flex justify-content-center align-items-center">
+    <img src="../../../assets/bg.jpg" >
+    <div class="card text-start shadow">
+        <div class="d-flex justify-content-center align-items-center">
+            <img src="../../../assets/avatar.svg" class="rounded-circle" style="width: 100px; height:100px">
+        </div>
+        <div class="card-body">
+            <mat-toolbar class="title d-flex justify-content-center align-items-center mb-4">
+                <span>Welcome</span>
+            </mat-toolbar>
+            <form novalidate class=" p-1">
+                <div class="form-floating mb-3">
+                    <input type="tel" class="form-control" id="floatingTel" placeholder="65454545">
+                    <label for="floatingTel">Phone number</label>
+                </div>
+                <div class="form-floating mb-3">
+                    <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
+                    <label for="floatingPassword">Password</label>
+                </div>
+                <a class="mb-3 d-flex justify-content-end align-items-center" (click)="recover()">Forgot Password?</a>
+                <div>
+                    <button type="submit" class="btn btn-login  mb-2">Login</button>
+                </div>
+                <div>
+                    <button class="btn btn-sign-up  mb-2" (click)="signUp()">Sign Up</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

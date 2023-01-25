@@ -1,3 +1,61 @@
 /* You can add global styles to this file, and also import other style files */
 
-@import '~bootstrap/dist/css/bootstrap.min.css'
+html{
+    height: 100%;
+}
+
+body{
+    width: 100%;
+    height: 100%;
+
+}
+ .container-fluid{
+    margin: 0;
+    padding: 0;
+    height: 100%;
+ }
+.content{
+    width: 100%;
+    height: 100%;
+    padding-left: 250px;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.content-body{
+    width: 95%;
+    height: 90%;
+    margin: 0;
+    background-color: #EDF1FA;
+    padding-left: 10px;
+    padding-right: 10px;
+    border-radius: 20px;
+    box-shadow: 1px 1px 2px 1px rgba(0.1, 0.05, 255, .2);}
+
+.half-width{
+    width: 40% !important;
+}
+
+.title{
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    background-color: #EDF1FA;
+    color: #829BD4;
+    font-size: 50px;
+    border-radius: 10px;
+}
+
+
+@media screen and (max-width:930px) {
+    .content{
+        padding-left: 100px;
+    }
+}
+
+@media screen and (max-width:600px) {
+    .content-body{
+        width: 100%;
+        height: 100%;
+    }
+}

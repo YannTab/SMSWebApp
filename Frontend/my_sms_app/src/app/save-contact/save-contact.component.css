@@ -1,0 +1,15 @@
+.button{
+    height: 60px;
+    width: 100%;
+    background-color: #EDF1FA;
+    color: #829BD4;
+    font-size: 30px;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    text-align: center;
+}
+
+@media screen and (max-width:930px) {
+    .content img{
+        display: none;
+    }
+}

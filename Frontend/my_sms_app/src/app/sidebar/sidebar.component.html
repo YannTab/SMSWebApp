@@ -1,0 +1,11 @@
+<div class="sidebar d-flex flex-column  align-items-center shadow">
+    <div class="mt-2 user shadow-sm rounded-1 d-flex align-items-center ">
+        <span class="fa fa-solid fa-user ms-2 me-1"></span> <span>Team</span>
+    </div>
+    <ul class="menu">
+        <li *ngFor="let menu of menu" class="menu-item mb-4" [routerLink]="menu.routeLink" routerLinkActive="active">
+            <span class="me-1" [class]="menu.icon"> </span> <span>{{menu.label}}</span>
+        </li>
+    </ul>
+</div>
+

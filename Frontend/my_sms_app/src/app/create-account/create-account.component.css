@@ -1,0 +1,34 @@
+.content-register{
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    background-color: #EDF1FA;
+}
+
+.content-register .card{
+    width: 40%;
+}
+
+.btn-sign-up{
+	height: 60px;
+    width: 100%;
+    font-size: 30px;
+    font-family:serif;
+    text-align: center;
+	border-radius: 50px;
+	background-image: linear-gradient(to right, #0f25d0, #5044d4, #1a17d8);
+	transition: .5s;
+    color: white;
+}
+
+@media screen and (max-width:900px) {
+    .content-register .card{
+        width: 80%;
+    }
+}
+
+@media screen and (max-width:525px) {
+    .content-register .card{
+        width: 100%;
+    }
+}

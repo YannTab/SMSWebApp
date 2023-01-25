@@ -1,5 +1,6 @@
  import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-create-account',
   templateUrl: './create-account.component.html',
@@ -9,13 +10,13 @@ export class CreateAccountComponent implements OnInit {
 
   
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit(): void {
   }
 
 
-  public saveData(){  
-    
+  onSubmit(){
+    this.router.navigate(['/sms'])
   }
 }

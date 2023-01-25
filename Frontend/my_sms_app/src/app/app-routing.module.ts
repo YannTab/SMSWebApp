@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { CardComponent } from './card/card.component';
+import { ConsultContactComponent } from './consult-contact/consult-contact.component';
 import { ConsultSmsComponent } from './consult-sms/consult-sms.component';
 import { CreateAccountComponent } from './create-account/create-account.component';
 import { ImportContactComponent } from './import-contact/import-contact.component';
@@ -14,18 +14,11 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'createAccount', component: CreateAccountComponent },
   { path: 'recoverPassword', component: RecoverPasswordComponent },
-
-  { 
-    path: 'card',
-    component: CardComponent,
-    children: [
-      { path: 'saveContact', component: SaveContactComponent },
-      { path: 'importContact', component: ImportContactComponent },
-      { path: 'consultContact', component: ImportContactComponent },
-      { path: 'sms', component: SmsComponent },
-      { path: 'consultSms', component: ConsultSmsComponent },
-    ],
-  },
+  { path: 'saveContact', component: SaveContactComponent },
+  { path: 'importContact', component: ImportContactComponent },
+  { path: 'consultContact', component: ConsultContactComponent },
+  { path: 'sms', component: SmsComponent },
+  { path: 'consultSms', component: ConsultSmsComponent }
 ];
 
 @NgModule({

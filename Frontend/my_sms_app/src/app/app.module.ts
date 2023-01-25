@@ -11,8 +11,17 @@ import { ImportContactComponent } from './import-contact/import-contact.componen
 import { ConsultContactComponent } from './consult-contact/consult-contact.component';
 import { SmsComponent } from './sms/sms.component';
 import { ConsultSmsComponent } from './consult-sms/consult-sms.component';
-import { CardComponent } from './card/card.component';
 import { RouterModule } from '@angular/router';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { SidebarComponent } from './sidebar/sidebar.component';
+import {MatListModule} from '@angular/material/list'
+import {MatToolbarModule} from '@angular/material/toolbar'
+import { MatTableModule } from '@angular/material/table';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatSortModule } from '@angular/material/sort';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { FormsModule } from '@angular/forms';
+import { MatInputModule } from '@angular/material/input';
 
 @NgModule({
   declarations: [
@@ -25,12 +34,21 @@ import { RouterModule } from '@angular/router';
     ConsultContactComponent,
     SmsComponent,
     ConsultSmsComponent,
-    CardComponent
+    SidebarComponent
   ],
   imports: [
     BrowserModule,
     RouterModule,
-    AppRoutingModule
+    AppRoutingModule,
+    BrowserAnimationsModule,
+    MatListModule,
+    MatToolbarModule,
+    MatPaginatorModule,
+    MatTableModule,
+    MatSortModule,
+    MatFormFieldModule,
+    FormsModule,
+    MatInputModule
   ],
   providers: [],
   bootstrap: [AppComponent]
