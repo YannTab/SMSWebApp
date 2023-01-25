@@ -1,33 +1,43 @@
 import { Response,Request,NextFunction } from "express"
 import { User } from "../../models/User";
-import { saveUser,editUser,deleteUser } from "../../services/users/users";
+import { saveUser,editUser,deleteUser, getUser, getAllUsers } from "../../services/users/users";
 
-export const saveUserController = function(req: Request, res: Response, next:NextFunction){
-    saveUser(req.body);
+export const saveUserController = async (req: Request, res: Response, next:NextFunction) => {
+    await saveUser(req.body);
     res.status(200).json({
         message : "user saved successfully",
-        data : User.findByPk(req.body.id)
+        data : await User.findByPk(req.body.id)
     })
     next()
 }
 
-export const getUserController = function(req: Request, res: Response,next:NextFunction){
+export const getUserController = async (req: Request, res: Response,next:NextFunction)=>{
     const {id} = req.params;
-    const user = editUser(id);
+    const user = await getUser(Number(id));
     res.json(user)
     next()
 }
-export const editUserController = function(req: Request, res: Response,next:NextFunction){
-    editUser(req.body);
+
+export const getAllUsersController = async (req:Request, res:Response, next: NextFunction) => {
+    const users = await getAllUsers();
+    res.json(users);
+    console.log("res: " + res)
+    next();
+}
+
+export const editUserController = async (req: Request, res: Response,next:NextFunction) => {
+    const {id} = req.params;
+    await editUser(req.body, Number(id));
     res.status(200).json({
         message : "user updated successfully",
-        data : User.findByPk(req.body.id)
+        data : await User.findByPk(Number(id))
     })
     next()
 }
-export const deleteUserController = function(req: Request, res: Response,next:NextFunction){
+
+export const deleteUserController = async (req: Request, res: Response,next:NextFunction)=>{
     const {id} = req.params;
-    const bool = deleteUser(id);
+    const bool = await deleteUser(Number(id));
     res.json({success:bool})
     next()
 }
