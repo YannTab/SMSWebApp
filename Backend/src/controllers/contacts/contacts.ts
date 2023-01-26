@@ -80,7 +80,7 @@ export const editContactController = async (req: Request, res: Response, next: N
             success: true,
             message: "Contact(s) updated successfully",
             data: {
-                updated_count,
+                updated_count: updated_count?.[0] || 0,
                 contact: await Contact.findByPk(id)
             }
         });

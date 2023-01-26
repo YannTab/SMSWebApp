@@ -17,11 +17,25 @@ export const saveUserController = async (req: Request, res: Response, next: Next
             throw errors;
         }
         const user = await saveUser(data);
+
+        // Create auth token for user
+        const token = signCredentials({
+            email: user.email,
+            phoneNumber: user.phoneNumber,
+            password: data.password
+        });
+
+        await createUserToken({
+            UserId: user.id,
+            token
+        });
+
         res.status(201).json({
             success: true,
             message: "user saved successfully",
             data: {
-                user
+                user,
+                token
             }
         });
     } catch (e) {
@@ -73,7 +87,7 @@ export const editUserController = async (req: Request, res: Response, next: Next
             success: true,
             message: "User updated successfully",
             data: {
-                updated_count: updatedCount,
+                updated_count: updatedCount?.[0] || 0,
                 user: await User.findByPk(req.customData!.user.id!)
             }
         });
