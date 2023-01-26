@@ -83,6 +83,7 @@ export const editUserController = async (req: Request, res: Response, next: Next
             throw errors;
         }
         const updatedCount = await editUser(data, req.customData!.user.id!);
+
         res.status(200).json({
             success: true,
             message: "User updated successfully",
