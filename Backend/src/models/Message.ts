@@ -8,6 +8,7 @@ export interface Message extends Model<InferAttributes<Message>, InferCreationAt
     msg: Text;
     date: Date;
     destinator: string;
+    UserId?: number;
 }
 
 export const Message = db.instance!.define<Message>('Message', {

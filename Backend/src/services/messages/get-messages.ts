@@ -1,3 +1,3 @@
-export const getMessages = () => {
-    // return Messages.find();
+export const getMessages = (searchParams: any) => {
+    // return Messages.find({where: searchParams});
 }

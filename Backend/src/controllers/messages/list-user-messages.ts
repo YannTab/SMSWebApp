@@ -1,12 +1,21 @@
-import { NextFunction, Request, Response } from "express"
+import { NextFunction, Response } from "express"
 import { getMessages } from "../../services/messages/get-messages";
 
-export const listUserMessagesController = function(req: Request, res: Response, next: NextFunction) {
-    getMessages();
-    res.status(200).json({
-        data: {
-            text: "This is the message pages",
-            success: true
-        }
-    })
+import { Request } from "../../custom-types";
+
+export const listUserMessagesController = function (req: Request, res: Response, next: NextFunction) {
+    try {
+        const messages = getMessages({ UserId: req.customData!.user.id! });
+        res.status(200).json({
+            data: {
+                success: true,
+                message: "Messages were fetched successfully",
+                data: {
+                    messages
+                }
+            }
+        })
+    } catch (error) {
+        next(error);
+    }
 };
