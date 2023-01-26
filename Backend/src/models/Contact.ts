@@ -12,7 +12,7 @@ export interface Contact extends Model<InferAttributes<Contact>, InferCreationAt
     tel: string;
 }
 
-export const Contact = db.instance!.define<Contact>('Contact', {
+export const Contact = db.instance!.define('Contact', {
     id: {
         type: DataTypes.INTEGER,
         primaryKey: true,

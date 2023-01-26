@@ -1,12 +1,17 @@
 import { Contact } from "../../models/Contact"
 
 export const saveContact = async(contact : any)=>{
-    await Contact.create(contact).then(contact=> console.log(contact.firstName+' has been created'))
+    await Contact.create(contact).then(contact=> console.log(contact +' has been created'))
 
 }
 export const getContact =async (id:number) => {
   const contact = await Contact.findOne({where : {id :id}});
   return contact;    
+}
+
+export const getContactByUserId =async (id:number) => {
+  const contactsofuser = await Contact.findAll({where : {UserId :id}});
+  return contactsofuser;    
 }
 
 export const getAllContacts = async ()=>{
