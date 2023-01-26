@@ -1,37 +1,34 @@
 import { Contact } from "../../models/Contact"
 
-export const saveContact = async(contact : any)=>{
-    await Contact.create(contact).then(contact=> console.log(contact.firstName+' has been created'))
-
+export const saveContact = async (contact: any) => {
+  const savedContact = await Contact.create(contact);
+  console.log(contact.firstName + ' has been created');
+  return saveContact;
 }
-export const getContact =async (id:number) => {
-  const contact = await Contact.findOne({where : {id :id}});
-  return contact;    
+export const getContact = async (searchParam: any) => {
+  const contact = await Contact.findOne({ where: searchParam });
+  return contact;
 }
 
-export const getAllContacts = async ()=>{
-  const contacts = Contact.findAll();
+export const getAllContacts = async (searchParams: any) => {
+  const contacts = Contact.findAll({where: searchParams});
   return contacts;
 }
 
-export const editContact =async (contact:any, id:number) => {
-    await Contact.update({
-      firstName: contact.firstName,
-      lastName: contact.lastName,
-      email: contact.email,
-      tel: contact.tel,
-    },{
-      where:{id : id}
-    }).then(contact => console.log( 'contact has been updated'))
-        
-  }
+export const editContact = async (contact: Contact, searchParam: any) => {
+  const updateInfo = await Contact.update(contact, {
+    where: searchParam
+  })
+  console.log('contact has been updated');
+  return updateInfo;
+}
 /*export const updateContact =async (contact:any,id:string) => {
-    var change = Contact.findOne({where : {id :id}})
+    let change = Contact.findOne({where : {id :id}})
     
     await Contact.create(contact).then(contact=> console.log(contact.firstName+'has been updated'))
     return contact;    
   }
   */
-export const deleteContact = async (id:number) => {
-    await Contact.destroy({where : {id :id}}).then( ()=> {return true}).catch(()=>{return false})
+export const deleteContact = async (searchParam: any) => {
+  return await Contact.destroy({ where: searchParam });
 }

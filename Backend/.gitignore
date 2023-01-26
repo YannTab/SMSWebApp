@@ -5,3 +5,4 @@ build/
 database/
 !database/.gitkeep
 yarn-error.log
+todos
