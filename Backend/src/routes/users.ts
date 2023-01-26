@@ -1,6 +1,5 @@
 import { NextFunction, Request, Response } from "express";
 import { userInfo } from "os";
-import { listUserMessagesController } from "../controllers/messages/list-user-messages";
 import { deleteUserController, editUserController, getAllUsersController, getUserController, saveUserController } from "../controllers/users/users";
 import { getAllUsers } from "../services/users/users";
 var express = require('express');

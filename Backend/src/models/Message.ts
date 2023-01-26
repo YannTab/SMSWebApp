@@ -8,9 +8,10 @@ export interface Message extends Model<InferAttributes<Message>, InferCreationAt
     msg: Text;
     date: Date;
     destinator: string;
+    
 }
 
-export const Message = db.instance!.define<Message>('Message', {
+export const Message = db.instance!.define('Message', {
     id: {
         type: DataTypes.INTEGER,
         primaryKey: true,

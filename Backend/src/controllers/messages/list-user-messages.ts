@@ -1,12 +1,9 @@
 import { NextFunction, Request, Response } from "express"
-import { getMessages } from "../../services/messages/get-messages";
+import { getMessagebyContactId } from "../../services/messages/get-messages";
 
-export const listUserMessagesController = function(req: Request, res: Response, next: NextFunction) {
-    getMessages();
-    res.status(200).json({
-        data: {
-            text: "This is the message pages",
-            success: true
-        }
-    })
+export const getMessagebyContactIdController = async (req: Request, res: Response, next: NextFunction) => {
+    const {contactId} = req.params
+    const contactMessages = await getMessagebyContactId(Number(contactId));
+    res.status(200).json(contactMessages)
+    next()
 };
