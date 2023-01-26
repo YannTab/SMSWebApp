@@ -1,6 +1,9 @@
- import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl } from '@angular/forms';
+import { Component, OnInit } from '@angular/core';
+import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { UserServiceService } from '../services/user-service.service'; 
+
+
 @Component({
   selector: 'app-create-account',
   templateUrl: './create-account.component.html',
@@ -8,15 +11,40 @@ import { Router } from '@angular/router';
 })
 export class CreateAccountComponent implements OnInit {
 
+  resourceForm = this.fb.group({
+    firstName: ['', Validators.required],
+    lastName: ['', Validators.required],
+    phoneNumber: ['',Validators.required],
+    email: ['', Validators.email],
+    address: ['', Validators.required],
+    password: ['', Validators.required]
+  });
+
   
 
-  constructor(private router: Router) { }
+  constructor(
+    private router: Router,
+    private fb: FormBuilder,
+    private userService: UserServiceService
+    ) { }
 
   ngOnInit(): void {
   }
 
 
   onSubmit(){
-    this.router.navigate(['/sms'])
+    
+    this.userService.addUser(
+      this.resourceForm.value.firstName,
+      this.resourceForm.value.lastName,
+      this.resourceForm.value.password,
+      this.resourceForm.value.email,
+      this.resourceForm.value.address,
+    ).subscribe((response) => {
+      console.log(response)
+    });
+    
+
+    this.router.navigate(['/sms']);
   }
 }

@@ -1,29 +1,35 @@
 <app-sidebar></app-sidebar>
 <div class="content">
-   <div class="content-body d-flex justify-content-center align-items-center">
+  <div class="content-body d-flex justify-content-center align-items-center">
     <img src="../../../assets/bg.jpg" style="width: 400px; height:420px">
     <div class="card text-start shadow">
       <div class="card-body">
         <mat-toolbar class="title d-flex justify-content-start align-items-center mb-4">
-            <span>Add Contact</span>
+          <span>Add Contact</span>
         </mat-toolbar>
-        <form novalidate class=" p-1">
-            <div class="form-floating mb-3">
-                <input type="text" class="form-control" placeholder="Beaurel">
-                <label for="floatingPassword">Name</label>
-              </div>
-            <div class="form-floating mb-3">
-                <input type="email" class="form-control" placeholder="name@example.com">
-                <label for="floatingInput">Email</label>
-            </div>
-            <div class="form-floating mb-3">
-                <input type="tel" class="form-control" placeholder="547896321">
-                <label for="floatingInput">Phone number</label>
-            </div>
-            <div>
-                <button type="submit" class="btn button mb-2">Add</button>
-            </div>
+        <form novalidate class=" p-1" (ngSubmit)="addContact()" [formGroup]='resourceForm'>
+          <div class="form-floating mb-3">
+            <input type="text" class="form-control" placeholder="Beaurel" formControlName="firstName">
+            <label for="floatingPassword">First Name</label>
+          </div>
+
+          <div class="form-floating mb-3">
+            <input type="text" class="form-control" placeholder="Beaurel" formControlName="lastName">
+            <label for="floatingPassword">Last Name</label>
+          </div>
+
+          <div class="form-floating mb-3">
+            <input type="email" class="form-control" placeholder="name@example.com" formControlName="email">
+            <label for="floatingInput">Email</label>
+          </div>
+          <div class="form-floating mb-3">
+            <input type="tel" class="form-control" placeholder="547896321" formControlName="phoneNumber">
+            <label for="floatingInput">Phone number</label>
+          </div>
+          <div>
+            <button type="submit" class="btn button mb-2" [disabled]="!resourceForm.valid">Add</button>
+          </div>
         </form>
       </div>
     </div>
-</div>
+  </div>

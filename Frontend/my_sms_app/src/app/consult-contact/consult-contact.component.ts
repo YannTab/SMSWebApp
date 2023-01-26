@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
+import { ContactServiceService } from '../services/contact-service.service';
 
 export interface Contact {
   email: string;
@@ -39,23 +40,28 @@ const ELEMENT_DATA: Contact[] = [
 export class ConsultContactComponent implements OnInit {
 
   displayedColumns: string[] = ['id', 'name', 'number', 'email', 'actions'];
-  dataSource!:MatTableDataSource<any>;
+  public contacts = [];
   @ViewChild('paginator') paginator!: MatPaginator;
   @ViewChild(MatSort) matSort!: MatSort;
 
-  constructor() { }
+  constructor(
+    private contactService : ContactServiceService,
+  ) { }
 
   ngOnInit(): void {
-    this.dataSource = new MatTableDataSource(ELEMENT_DATA)
+    
+    this.contactService.loadContact(1).subscribe((response) => {
+      console.log(response);
+    });
+
   }
 
   ngAfterViewInit() {
-    this.dataSource.paginator = this.paginator;
-    this.dataSource.sort = this.matSort
+    
   }
 
   applyFilter($event:any){
-    this.dataSource.filter = $event.target.value;
+    
   }
 
   deleteContact(contact:any){
