@@ -6,6 +6,6 @@ var router = express.Router();
 
 router.post('/send', sendMessageController);
 
-router.get('/getMessage/:ContactId', getMessagebyContactIdController);
+router.get('/getMessage/:id', getMessagebyContactIdController);
 
 module.exports = router;

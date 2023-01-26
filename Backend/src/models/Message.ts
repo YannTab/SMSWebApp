@@ -23,7 +23,7 @@ export const Message = db.instance!.define('Message', {
     },
     date: {
         type: DataTypes.DATE,
-        allowNull:false,
+        allowNull:true,
     },
     destinator: {
         type:DataTypes.STRING,

@@ -18,7 +18,7 @@ export const sendMessage = async(message : any)=>{
     }
     postMessage('https://asap-desk.com/api/v0/Whatsapp/message', sentMessage)
         .then(async() => {
-            await Message.create(message).then((message:any)=> console.log(message.text +' : has been sent'))
+            await Message.create(message).then((message:any)=> console.log(message.msg +' : has been sent'))
         });
 }
 
