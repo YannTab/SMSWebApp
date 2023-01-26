@@ -23,7 +23,7 @@ export class LoginComponent implements OnInit {
 
   public ngOnInit(): void {}
 
-  recover() {
+  recoverPassword() {
     this.router.navigate(['/recover']);
   }
 
@@ -32,7 +32,7 @@ export class LoginComponent implements OnInit {
   }
 
   signIn() {
-    this.router.navigate(['/card'])
+    this.router.navigate(['/sms'])
   }
 
 }

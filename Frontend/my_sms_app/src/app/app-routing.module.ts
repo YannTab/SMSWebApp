@@ -13,7 +13,7 @@ const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
   { path: 'login', component: LoginComponent },
   { path: 'createAccount', component: CreateAccountComponent },
-  { path: 'recoverPassword', component: RecoverPasswordComponent },
+  { path: 'recover', component: RecoverPasswordComponent },
   { path: 'saveContact', component: SaveContactComponent },
   { path: 'importContact', component: ImportContactComponent },
   { path: 'consultContact', component: ConsultContactComponent },

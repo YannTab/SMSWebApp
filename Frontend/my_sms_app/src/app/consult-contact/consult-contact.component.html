@@ -2,7 +2,7 @@
 <div class="content">
     <div class="content-body d-flex flex-column justify-content-center">
         <mat-toolbar class="title mb-1">
-            <span>Liste des contacts</span>
+            <span>List of contacts</span>
         </mat-toolbar>
         <input class="form-control mb-1 half-width" type="text" placeholder="Ex. Paul" (keyup)="applyFilter($event)">
         <table mat-table matSort matSortActive="created" matSortDisableClear matSortDirection="desc" 
@@ -13,12 +13,12 @@
             </ng-container>
     
             <ng-container matColumnDef="name">
-                <th mat-header-cell mat-sort-header *matHeaderCellDef> Nom </th>
+                <th mat-header-cell mat-sort-header *matHeaderCellDef> Name </th>
                 <td mat-cell *matCellDef="let element"> {{element.name}} </td>
             </ng-container>
     
             <ng-container matColumnDef="number">
-                <th mat-header-cell mat-sort-header *matHeaderCellDef> Numero </th>
+                <th mat-header-cell mat-sort-header *matHeaderCellDef> Phone number</th>
                 <td mat-cell *matCellDef="let element"> {{element.number}} </td>
             </ng-container>
     

@@ -7,22 +7,22 @@ export const Menu = [
     {
         routeLink: '/importContact',
         icon: 'fa fa-download',
-        label: 'Importer Contacts'
+        label: 'Import Contacts'
     },
     {
         routeLink: '/saveContact',
         icon: 'fa fa-user-plus',
-        label: 'Ajouter Contact'
+        label: 'Add Contact'
     },
     {
         routeLink: '/consultSms',
         icon: 'fa fa-comments',
-        label: 'Message'
+        label: 'Messages'
     },
     {
         routeLink: '/sms',
         icon: 'fa fa-paper-plane',
-        label: 'Envoi SMS'
+        label: 'send message'
     },
     {
         routeLink: '/consultContact',
