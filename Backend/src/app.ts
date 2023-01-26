@@ -3,9 +3,14 @@ import express, { NextFunction, Request, Response, Express } from "express";
 import path from "path";
 import cookieParser from "cookie-parser";
 import logger from "morgan";
+import { createDbConnection } from "./db/connect";
+import { db } from "./db";
+import { synchronizeDB } from "./db/sync";
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
+var contactsRouter = require('./routes/contacts');
+var messagesRouter = require('./routes/messages');
 
 export const initializeApp = (app: Express) => {
   // view engine setup
@@ -20,6 +25,8 @@ export const initializeApp = (app: Express) => {
 
   app.use('/', indexRouter);
   app.use('/users', usersRouter);
+  app.use('/contacts', contactsRouter);
+  app.use('/messages', messagesRouter);
 
   // catch 404 and forward to error handler
   // app.use(function (req, res, next) {
