@@ -1,7 +1,9 @@
 import express, { NextFunction, Request, Response, Express } from "express";
-// import createError from "http-errors";
+import swaggerUi from "swagger-ui-express";
+import YAML from "yamljs";
 import path from "path";
 import cookieParser from "cookie-parser";
+import cors from "cors";
 import logger from "morgan";
 import { createDbConnection } from "./db/connect";
 import { db } from "./db";
@@ -20,8 +22,26 @@ export const initializeApp = (app: Express) => {
   app.use(cookieParser());
   // app.use(express.static(path.join(__dirname, 'public')));
 
+  // Corse Policies
+  var corsOptions = {
+    origin: '*',
+    optionsSuccessStatus: 200 // For legacy browser support
+  }
+
+  app.use(cors(corsOptions));
+
   // Include Routers
   includeRoutes(app);
+
+  // Attach API Documentation
+  // Swagger documentation route
+  if (process.env.SERVER_ENV !== 'NETLIFY') {
+    app.use(
+      "/api-docs",
+      swaggerUi.serve,
+      swaggerUi.setup(YAML.load("./swagger.yaml"))
+    );
+  }
 
   // catch 404 and forward to error handler
   // app.use(function (req, res, next) {
