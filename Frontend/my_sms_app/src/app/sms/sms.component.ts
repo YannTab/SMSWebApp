@@ -20,6 +20,7 @@ export interface Contact {
 export class SmsComponent implements OnInit {
 
   public contacts = [];
+  title : string = '';
 
   resourceForm = this.fb.group({
     sms: ['', Validators.required]
@@ -42,6 +43,10 @@ export class SmsComponent implements OnInit {
 
   send() {
 
+  }
+
+  onConsult(id : number) {
+    this.title = this.contacts[id].firstName;
   }
 
 }

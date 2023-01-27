@@ -13,19 +13,20 @@
             </form>
             <h3>Messages</h3>
             <mat-list>
-                <div class="d-flex justify-content-center align-items-center" *ngFor="let c of contacts">
-                    <img class="rounded-circle" src="../../favicon.ico" alt="" style="height: 35px; width:35px">
-                    <mat-list-item>
-                        <span matListItemTitle>{{c.firstName}}</span>
-                    </mat-list-item>
-                </div>
-               
+                <div class="d-flex justify-content-center align-items-center" *ngFor="let c of contacts; let i = index ">
+                    <div (click)="onConsult(i)">
+                        <img class="rounded-circle" src="../../favicon.ico" alt="" style="height: 35px; width:35px">
+                        <mat-list-item>
+                            <span matListItemTitle>{{c.firstName}}</span>
+                        </mat-list-item>
+                    </div>
+                </div>         
             </mat-list>
         </div>
         <div class="sms-msg rounded shadow col-9 m-0 ps-1 pe-0">
             <mat-toolbar class="title-sms">
                 <img class="rounded-circle me-2" src="../../favicon.ico" alt="" style="height: 35px; width:35px">
-                <span>Aissatou</span>
+                <span>{{title}}</span>
             </mat-toolbar>
             <div class="row mb-2 justify-content-center send">
                 <div class="col-9">
