@@ -11,6 +11,18 @@ interface UserData {
   address: String;
 }
 
+
+
+interface SmsData {
+  msg: String;
+  date: Date;
+  destinator: String;
+  createdAt: Date;
+  updatedAt: Date;
+  ContactId: number;
+  UserId: number;
+}
+
 const httpOptions = {
   headers: new HttpHeaders(),
 };
@@ -21,6 +33,7 @@ const httpOptions = {
 export class UserServiceService {
 
   addUserUrl = 'http://localhost:8081/users/save';
+  loadAllContactUrl = 'http://localhost:8081/contacts';
 
   constructor(
     private http: HttpClient,
@@ -43,4 +56,11 @@ export class UserServiceService {
     console.log(userData);
     return this.http.post(this.addUserUrl, userData, httpOptions);
   }
+
+  getAllUser(): Observable<any> {
+    return this.http.get(this.loadAllContactUrl);
+  }
+
+
+  sendSms(){}
 }

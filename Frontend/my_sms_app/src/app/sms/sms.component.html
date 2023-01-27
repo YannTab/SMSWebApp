@@ -3,80 +3,23 @@
     <div class="content-body-sms row">
         <div class="sms-contact rounded-2 shadow  col-3">
             <button class="btn button mb-3" routerLink="/consultSms">Consult message</button>
-            <form novalidate >
+            <form novalidate (ngSubmit)="send()" [formGroup]='resourceForm'>
                 <div class="row mb-2">
                     <div class="col-8">
-                        <input type="text" class="form-control" name="" placeholder="Search">
+                        <input type="text" class="form-control" name="" placeholder="Search" formControlName="sms">
                     </div>
-                    <button class="btn btn-search col-2"><span class="fa fa-solid fa-search me-1"> </span></button>
+                    <button class="btn btn-search col-2" type="submit" [disabled]="!resourceForm.valid"><span class="fa fa-solid fa-search me-1"> </span></button>
                 </div>
             </form>
             <h3>Messages</h3>
             <mat-list>
-                <div class="d-flex justify-content-center align-items-center">
+                <div class="d-flex justify-content-center align-items-center" *ngFor="let c of contacts">
                     <img class="rounded-circle" src="../../favicon.ico" alt="" style="height: 35px; width:35px">
                     <mat-list-item>
-                        <span matListItemTitle>Title</span>
-                        <span matListItemLine>Second line</span>
-                        <span matListItemLine>Third line</span>
+                        <span matListItemTitle>{{c.firstName}}</span>
                     </mat-list-item>
                 </div>
-                <div class="d-flex justify-content-center align-items-center">
-                    <img class="rounded-circle" src="../../favicon.ico" alt="" style="height: 35px; width:35px">
-                    <mat-list-item>
-                        <span matListItemTitle>Title</span>
-                        <span matListItemLine>Second line</span>
-                        <span matListItemLine>Third line</span>
-                    </mat-list-item>
-                </div>
-                <div class="d-flex justify-content-center align-items-center">
-                    <img class="rounded-circle" src="../../favicon.ico" alt="" style="height: 35px; width:35px">
-                    <mat-list-item>
-                        <span matListItemTitle>Title</span>
-                        <span matListItemLine>Second line</span>
-                        <span matListItemLine>Third line</span>
-                    </mat-list-item>
-                </div>
-                <div class="d-flex justify-content-center align-items-center">
-                    <img class="rounded-circle" src="../../favicon.ico" alt="" style="height: 35px; width:35px">
-                    <mat-list-item>
-                        <span matListItemTitle>Title</span>
-                        <span matListItemLine>Second line</span>
-                        <span matListItemLine>Third line</span>
-                    </mat-list-item>
-                </div>
-                <div class="d-flex justify-content-center align-items-center">
-                    <img class="rounded-circle" src="../../favicon.ico" alt="" style="height: 35px; width:35px">
-                    <mat-list-item>
-                        <span matListItemTitle>Title</span>
-                        <span matListItemLine>Second line</span>
-                        <span matListItemLine>Third line</span>
-                    </mat-list-item>
-                </div>
-                <div class="d-flex justify-content-center align-items-center">
-                    <img class="rounded-circle" src="../../favicon.ico" alt="" style="height: 35px; width:35px">
-                    <mat-list-item>
-                        <span matListItemTitle>Title</span>
-                        <span matListItemLine>Second line</span>
-                        <span matListItemLine>Third line</span>
-                    </mat-list-item>
-                </div>
-                <div class="d-flex justify-content-center align-items-center">
-                    <img class="rounded-circle" src="../../favicon.ico" alt="" style="height: 35px; width:35px">
-                    <mat-list-item>
-                        <span matListItemTitle>Title</span>
-                        <span matListItemLine>Second line</span>
-                        <span matListItemLine>Third line</span>
-                    </mat-list-item>
-                </div>
-                <div class="d-flex justify-content-center align-items-center">
-                    <img class="rounded-circle" src="../../favicon.ico" alt="" style="height: 35px; width:35px">
-                    <mat-list-item>
-                        <span matListItemTitle>Title</span>
-                        <span matListItemLine>Second line</span>
-                        <span matListItemLine>Third line</span>
-                    </mat-list-item>
-                </div>
+               
             </mat-list>
         </div>
         <div class="sms-msg rounded shadow col-9 m-0 ps-1 pe-0">

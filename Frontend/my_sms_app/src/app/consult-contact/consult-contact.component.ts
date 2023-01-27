@@ -50,8 +50,8 @@ export class ConsultContactComponent implements OnInit {
 
   ngOnInit(): void {
     
-    this.contactService.loadContact(1).subscribe((response) => {
-      console.log(response);
+    this.contactService.loadContact().subscribe((response) => {
+      this.contacts = response;
     });
 
   }

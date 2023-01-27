@@ -26,7 +26,7 @@ const httpOptions = {
 export class ContactServiceService {
 
   addContactUrl = 'http://localhost:8081/contacts/save';
-  loadContactUrl = '';
+  loadContactUrl = 'http://localhost:8081/contacts';
 
   
   constructor(
@@ -50,10 +50,8 @@ export class ContactServiceService {
     return this.http.post(this.addContactUrl, contactData, httpOptions);
   }
 
-  loadContact(
-    id : number 
-  ): Observable<any> {
-      return this.http.get(this.loadContactUrl + id);
+  loadContact(): Observable<any> {
+    return this.http.get(this.loadContactUrl);
   }
   
   
