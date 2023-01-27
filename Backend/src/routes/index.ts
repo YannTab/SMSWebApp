@@ -1,16 +1,19 @@
-import { NextFunction, Request, Response } from "express";
+import { NextFunction, Request, Response, Express } from "express";
 
-var express = require('express');
-var router = express.Router();
+import usersRouter from './users';
+import contactsRouter from './contacts';
+import messagesRouter from './messages';
+import authRouter from './auth';
+import { authMiddleware } from "../middleware/auth";
 
-/* GET home page. */
-router.get('/', function(req: Request, res: Response, next: NextFunction) {
-  res.status(200).json({
-    data: {
-      text: "This is the index page",
-      success: true
-    }
-  })
-});
+export const includeRoutes = (app: Express) => {
+  /* GET home page. */
+  app.get('/', function (req: Request, res: Response, next: NextFunction) {
+    res.status(200).send("SMS WEB API v1.0");
+  });
 
-module.exports = router;
+  app.use('/users', usersRouter);
+  app.use('/contacts', authMiddleware, contactsRouter);
+  app.use('/messages', authMiddleware, messagesRouter);
+  app.use('/auth', authRouter);
+}

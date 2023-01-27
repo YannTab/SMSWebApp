@@ -7,9 +7,10 @@ import { User } from "./User";
 export interface Contact extends Model<InferAttributes<Contact>, InferCreationAttributes<Contact>> {
     id: CreationOptional<number>;
     firstName: string;
-    lastName: string;
-    email: string;
+    lastName?: string;
+    email?: string;
     tel: string;
+    UserId?: number;
 }
 
 export const Contact = db.instance!.define('Contact', {
@@ -24,7 +25,7 @@ export const Contact = db.instance!.define('Contact', {
     },
     lastName: {
         type: DataTypes.STRING,
-        allowNull: false
+        allowNull: true
     }, 
     email: {
         type: DataTypes.STRING,

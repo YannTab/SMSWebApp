@@ -1,20 +1,15 @@
 import express, { NextFunction, Request, Response, Express } from "express";
-// import createError from "http-errors";
+import swaggerUi from "swagger-ui-express";
+import YAML from "yamljs";
 import path from "path";
 import cookieParser from "cookie-parser";
+import cors from "cors";
 import logger from "morgan";
 import { createDbConnection } from "./db/connect";
 import { db } from "./db";
 import { synchronizeDB } from "./db/sync";
-
-
-
-
-var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
-var contactsRouter = require('./routes/contacts');
-var messagesRouter = require('./routes/messages');
-
+import { includeRoutes } from "./routes";
+import { mainErorHandler } from "./middleware/error-handling";
 
 export const initializeApp = (app: Express) => {
   // view engine setup
@@ -39,24 +34,32 @@ export const initializeApp = (app: Express) => {
   // app.use(express.static(path.join(__dirname, 'public')));
 
 
-  app.use('/', indexRouter);
-  app.use('/users', usersRouter);
-  app.use('/contacts', contactsRouter);
-  app.use('/messages', messagesRouter);
+   // Corse Policies
+   var corsOptions = {
+    origin: '*',
+    optionsSuccessStatus: 200 // For legacy browser support
+  }
+
+  app.use(cors(corsOptions));
+
+  // Include Routers
+  includeRoutes(app);
+
+  // Attach API Documentation
+  // Swagger documentation route
+  if (process.env.SERVER_ENV !== 'NETLIFY') {
+    app.use(
+      "/api-docs",
+      swaggerUi.serve,
+      swaggerUi.setup(YAML.load("./swagger.yaml"))
+    );
+  }
 
   // catch 404 and forward to error handler
   // app.use(function (req, res, next) {
   //   next(createError(404));
   // });
 
-  // error handler
-  app.use(function (err: any, req: Request, res: Response, next: NextFunction) {
-    // set locals, only providing error in development
-    res.locals.message = err.message;
-    res.locals.error = req.app.get('env') === 'development' ? err : {};
-
-    // render the error page
-    res.status(err.status || 500);
-    res.render('error');
-  });
+  // Attach Error Handlers
+  app.use(mainErorHandler)
 }

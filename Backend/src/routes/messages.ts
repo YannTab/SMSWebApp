@@ -1,11 +1,12 @@
 import { getMessagebyContactIdController } from "../controllers/messages/list-user-messages";
+import { Router } from "express";
+
 import { sendMessageController } from "../controllers/messages/send-message";
 
-var express = require('express');
-var router = express.Router();
+const router = Router();
 
 router.post('/send', sendMessageController);
 
 router.get('/getMessage/:id', getMessagebyContactIdController);
 
-module.exports = router;
+export default router;

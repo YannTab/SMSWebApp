@@ -9,5 +9,6 @@ const dbFilePath = path.join(
 export const config = new Map<string, any>([
   ['envMode', process.env.NODE_ENV],
   ['port', process.env.PORT || 8081],
-  ['dbFilePath', dbFilePath]
+  ['dbFilePath', dbFilePath],
+  ['jwtPrivateKey', process.env.JWT_PRIVATE_KEY]
 ]);
