@@ -1,6 +1,6 @@
 import { Response,Request,NextFunction } from "express"
 import { Contact } from "../../models/Contact";
-import { saveContact,editContact,deleteContact, getContact, getAllContacts } from "../../services/contacts/contacts";
+import { saveContact,editContact,deleteContact, getContact, getAllContacts, getContactByUserId } from "../../services/contacts/contacts";
 
 export const saveContactController = async (req: Request, res: Response, next:NextFunction) => {
     await saveContact(req.body);
@@ -15,6 +15,13 @@ export const getContactController = async (req: Request, res: Response,next:Next
     const {id} = req.params;
     const contact = await getContact(Number(id));
     res.json(contact)
+    next()
+}
+
+export const getContactbyUserIdController = async (req: Request, res: Response,next:NextFunction) => {
+    const {id} = req.params;
+    const contactsofuser = await getContactByUserId(Number(id));
+    res.json(contactsofuser)
     next()
 }
 
