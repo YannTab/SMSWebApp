@@ -1,0 +1,799 @@
+openapi: "3.0.0"
+info:
+  description: "4GI SMS Web API Documentation"
+  version: "1.0.0"
+  title: "SMS Web API"
+servers:
+  - url: "http://localhost:8081"
+    description: "Local server"
+  - url: "http://localhost:8082"
+    description: "Another Local server"
+tags:
+  - name: "auth"
+    description: "Operations involving authentication"
+  - name: "users"
+    description: "Operations involving users"
+  - name: "contacts"
+    description: "Operations involving contacts"
+paths:
+  /auth/login:
+    post:
+      tags:
+        - "auth"
+      security: []
+      summary: "Logs user into the system"
+      description: Return's a token to be used as bearer token
+      operationId: "login"
+      requestBody:
+        required: true
+        description: "Created user object"
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/CreateUserBody"
+      responses:
+        "201":
+          description: "User created successfully"
+          content:
+            application/json:
+              schema:
+                type: "object"
+                properties:
+                  success:
+                    type: boolean
+                    example: true
+                  message:
+                    type: string
+                    example: User save successfully
+                  data:
+                    type: object
+                    properties:
+                      token:
+                        type: string
+                        example: some hash
+        "400":
+          description: "Bad Request. Probabily inconsistent request body"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/AppErrorResponse"
+        "500":
+          description: "There was an error creating the user"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/AppErrorResponse"
+  /auth/logout:
+    post:
+      tags:
+        - "auth"
+      summary: "Logs user out of the system"
+      description: "Logs user out of the system"
+      operationId: "logout"
+      responses:
+        "200":
+          description: "User logged out successfully"
+          content:
+            application/json:
+              schema:
+                type: "object"
+                properties:
+                  success:
+                    type: boolean
+                    example: true
+                  message:
+                    type: string
+                    example: "User logged out successfully"
+        "400":
+          description: "Bad Request. Probabily inconsistent request body"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/AppErrorResponse"
+        "401":
+          description: "Unauthorized"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/AppErrorResponse"
+        "404":
+          description: "Resource not found"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/AppErrorResponse"
+        "500":
+          description: "There was an error creating the user"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/AppErrorResponse"
+  /users/:
+    post:
+      tags:
+        - "users"
+      security: []
+      summary: "Create user"
+      description: "Creates a user"
+      operationId: "createUser"
+      requestBody:
+        required: true
+        description: "Created user object"
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/CreateUserBody"
+      responses:
+        "201":
+          description: "User created successfully"
+          content:
+            application/json:
+              schema:
+                type: "object"
+                properties:
+                  success:
+                    type: boolean
+                    example: true
+                  message:
+                    type: string
+                    example: User save successfully
+                  data:
+                    type: object
+                    properties:
+                      user:
+                        $ref: "#/components/schemas/SingleUserResponseObject"
+                      token:
+                        type: string
+                        example: sdf34983ruiju^^&67343
+        "400":
+          description: "Bad Request. Probabily inconsistent request body"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/AppErrorResponse"
+        "500":
+          description: "There was an error creating the user"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/AppErrorResponse"
+  /users/me:
+    put:
+      tags:
+        - "users"
+      summary: "Update user Profile"
+      description: Updates a user's profile
+      operationId: updateUser
+      requestBody:
+        required: true
+        description: "Attributes to be updated"
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/UpdateUserBody"
+      responses:
+        "200":
+          description: "User updated successfully"
+          content:
+            application/json:
+              schema:
+                type: "object"
+                properties:
+                  success:
+                    type: boolean
+                    example: true
+                  message:
+                    type: string
+                    example: User updated successfully
+                  data:
+                    type: object
+                    properties:
+                      user:
+                        $ref: "#/components/schemas/SingleUserResponseObject"
+                      updated_count:
+                        type: number
+                        example: 1
+        "400":
+          description: "Bad Request. Probabily inconsistent request body"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/AppErrorResponse"
+        "401":
+          description: "Unauthorized to access resource"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/AppErrorResponse"
+        "500":
+          description: "There was an error creating the user"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/AppErrorResponse"
+    delete:
+      tags:
+        - "users"
+      summary: "Close User Account"
+      description: Deletes a user's account
+      operationId: deleteUser
+      responses:
+        "200":
+          description: "User deleted successfully"
+          content:
+            application/json:
+              schema:
+                type: "object"
+                properties:
+                  success:
+                    type: boolean
+                    example: true
+                  message:
+                    type: string
+                    example: User deleted successfully
+                  data:
+                    type: object
+                    properties:
+                      user:
+                        $ref: "#/components/schemas/SingleUserResponseObject"
+                      deleted_count:
+                        type: number
+                        example: 1
+        "400":
+          description: "Bad Request. Probabily inconsistent request body"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/AppErrorResponse"
+        "401":
+          description: "Unauthorized to access resource"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/AppErrorResponse"
+        "500":
+          description: "There was an error deleting the user"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/AppErrorResponse"
+    get:
+      tags:
+        - "users"
+      summary: "Get the current user's profile"
+      description: "Get the current user's profile"
+      operationId: "getUserProfile"
+      responses:
+        "200":
+          description: "User fetched successfully"
+          content:
+            application/json:
+              schema:
+                type: "object"
+                properties:
+                  success:
+                    type: boolean
+                    example: true
+                  message:
+                    type: string
+                    example: User fetched successfully
+                  data:
+                    type: object
+                    properties:
+                      user:
+                        $ref: "#/components/schemas/SingleUserResponseObject"
+        "400":
+          description: "Bad Request"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/AppErrorResponse"
+        "401":
+          description: "Unauthorized to access resource"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/AppErrorResponse"
+        "500":
+          description: "There was an error processing"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/AppErrorResponse"
+  /contacts:
+    post:
+      tags:
+        - "contacts"
+      summary: "Create a user contact"
+      description: "Creates a user contact"
+      operationId: "createContact"
+      requestBody:
+        required: true
+        description: "Contact Object to be Created"
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/CreateContactBody"
+      responses:
+        "201":
+          description: "Contact created successfully"
+          content:
+            application/json:
+              schema:
+                type: "object"
+                properties:
+                  success:
+                    type: boolean
+                    example: true
+                  message:
+                    type: string
+                    example: User save successfully
+                  data:
+                    type: object
+                    properties:
+                      user:
+                        $ref: "#/components/schemas/SingleContactResponseObject"
+        "400":
+          description: "Bad Request. Probabily inconsistent request body"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/AppErrorResponse"
+        "401":
+          description: "Unauthorized"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/AppErrorResponse"
+        "500":
+          description: "There was an error creating the user"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/AppErrorResponse"
+    get:
+      tags:
+        - "contacts"
+      summary: "Get the current user's contacts"
+      description: "Get the curren"
+      operationId: "getUserContacts"
+      responses:
+        "200":
+          description: "User Contact fetched successfully"
+          content:
+            application/json:
+              schema:
+                type: "object"
+                properties:
+                  success:
+                    type: boolean
+                    example: true
+                  message:
+                    type: string
+                    example: User Contact fetched successfully
+                  data:
+                    type: object
+                    properties:
+                      user:
+                        $ref: "#/components/schemas/SingleContactResponseObject"
+        "400":
+          description: "Bad Request"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/AppErrorResponse"
+        "401":
+          description: "Unauthorized to access resource"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/AppErrorResponse"
+        "404":
+          description: "Resource not found here"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/AppErrorResponse"
+        "500":
+          description: "There was an error processing"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/AppErrorResponse"
+  /contacts/{id}:
+    get:
+      tags:
+        - "contacts"
+      summary: "Get the current user's contact by Id"
+      description: "Get the current user's contact by Id"
+      operationId: "getUserContact"
+      parameters:
+        - name: "id"
+          in: "query"
+          description: "The id of the record"
+          required: false
+          schema:
+            type: "string"
+      responses:
+        "200":
+          description: "User Contact fetched successfully"
+          content:
+            application/json:
+              schema:
+                type: "object"
+                properties:
+                  success:
+                    type: boolean
+                    example: true
+                  message:
+                    type: string
+                    example: User Contact fetched successfully
+                  data:
+                    type: object
+                    properties:
+                      user:
+                        $ref: "#/components/schemas/SingleContactResponseObject"
+        "400":
+          description: "Bad Request"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/AppErrorResponse"
+        "401":
+          description: "Unauthorized to access resource"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/AppErrorResponse"
+        "404":
+          description: "Resource not found here"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/AppErrorResponse"
+        "500":
+          description: "There was an error processing"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/AppErrorResponse"
+    delete:
+      tags:
+        - "contacts"
+      summary: "delete user's contact"
+      description: Deletes a user's contact
+      operationId: deleteUserContact
+      parameters:
+        - name: "id"
+          in: "query"
+          description: "The id of the record"
+          required: false
+          schema:
+            type: "string"
+      responses:
+        "200":
+          description: "UserContact deleted successfully"
+          content:
+            application/json:
+              schema:
+                type: "object"
+                properties:
+                  success:
+                    type: boolean
+                    example: true
+                  message:
+                    type: string
+                    example: User deleted successfully
+                  data:
+                    type: object
+                    properties:
+                      user:
+                        $ref: "#/components/schemas/SingleUserResponseObject"
+                      deleted_count:
+                        type: number
+                        example: 1
+        "400":
+          description: "Bad Request. Probabily inconsistent request body"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/AppErrorResponse"
+        "401":
+          description: "Unauthorized to access resource"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/AppErrorResponse"
+        "404":
+          description: "Unauthorized to access resource"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/AppErrorResponse"
+        "500":
+          description: "There was an error deleting the user"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/AppErrorResponse"
+    put:
+      tags:
+        - "contacts"
+      summary: "Update a users contact"
+      description: Updates a user's contact
+      operationId: updateUserContact
+      parameters:
+        - name: "id"
+          in: "query"
+          description: "The id of the record to be updated"
+          required: false
+          schema:
+            type: "string"
+      requestBody:
+        required: true
+        description: "Attributes to be updated"
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/UpdateContactBody"
+      responses:
+        "200":
+          description: "User updated successfully"
+          content:
+            application/json:
+              schema:
+                type: "object"
+                properties:
+                  success:
+                    type: boolean
+                    example: true
+                  message:
+                    type: string
+                    example: User updated successfully
+                  data:
+                    type: object
+                    properties:
+                      user:
+                        $ref: "#/components/schemas/SingleContactResponseObject"
+                      updated_count:
+                        type: number
+                        example: 1
+        "400":
+          description: "Bad Request. Probabily inconsistent request body"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/AppErrorResponse"
+        "401":
+          description: "Unauthorized to access resource"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/AppErrorResponse"
+        "500":
+          description: "There was an error"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/AppErrorResponse"
+components:
+  securitySchemes:
+    bearerAuth:
+      type: "http"
+      scheme: "bearer"
+      bearerFormat: "JWT"
+  responses:
+    UnauthorizedError:
+      description: "Unauthorized!! Access token is missing or invalid or expired"
+  schemas:
+    CreateUserBody:
+      type: "object"
+      required: [firstName, lastName, password, phoneNumber, email, address]
+      properties:
+        firstName:
+          type: string
+          example: John
+        lastName:
+          type: string
+          example: Doe
+        password:
+          type: string
+          example: anything
+        phoneNumber:
+          type: string
+          example: "23766112233"
+        email:
+          type: string
+          example: lotbill@gmail.com
+        address:
+          type: string
+          example: Bastos
+    CreateContactBody:
+      type: "object"
+      required: [firstName, tel]
+      properties:
+        firstName:
+          type: string
+          example: John
+        lastName:
+          type: string
+          example: Doe
+        tel:
+          type: string
+          example: "23766112233"
+        email:
+          type: string
+          example: lotbill@gmail.com
+    UpdateContactBody:
+      type: "object"
+      properties:
+        firstName:
+          type: string
+          example: John
+        lastName:
+          type: string
+          example: Doe
+        tel:
+          type: string
+          example: "23766112233"
+        email:
+          type: string
+          example: lotbill@gmail.com
+    SingleContactResponseObject:
+      type: "object"
+      properties:
+        firstName:
+          type: string
+          example: John
+        lastName:
+          type: string
+          example: Doe
+        tel:
+          type: string
+          example: "23766112233"
+        email:
+          type: string
+          example: lotbill@gmail.com
+        UserId:
+          type: number
+          example: 1
+    UpdateUserBody:
+      type: "object"
+      properties:
+        firstName:
+          type: string
+          example: John
+        lastName:
+          type: string
+          example: Doe
+        address:
+          type: string
+          example: Bastos
+    SingleUserResponseObject:
+      type: "object"
+      properties:
+        id:
+          type: number
+          example: 1
+        firstName:
+          type: string
+          example: John
+        lastName:
+          type: string
+          example: Doe
+        phoneNumber:
+          type: string
+          example: "23766112233"
+        email:
+          type: string
+          example: lotbill@gmail.com
+        address:
+          type: string
+          example: Bastos
+    AppErrorResponse:
+      type: "object"
+      required:
+        - success
+        - errors
+      properties:
+        success:
+          type: boolean
+          example: false
+        statusCode:
+          type: number
+          example: 404
+        errors:
+          type: array
+          items:
+            type: object
+            required:
+              - code
+              - message
+            properties:
+              code:
+                type: number
+                example: 1200
+              message:
+                type: string
+                example: Error doing something
+              statusCode:
+                type: number
+                example: 404
+        lastName:
+          type: string
+          example: Doe
+        phoneNumber:
+          type: string
+          example: "23766112233"
+        email:
+          type: string
+          example: lotbill@gmail.com
+        address:
+          type: string
+          example: Bastos
+    CloseSessionBody:
+      type: "object"
+      required: [rating, tipAmount]
+      properties:
+        rating:
+          type: "number"
+        tipAmount:
+          type: "number"
+        paymentMethodId:
+          type: "string"
+      example:
+        rating: 2
+        tipAmount: 2
+        paymentMethodId: "pi_jdsksdsd55d4v4s5dv"
+    CreateEventBody:
+      type: "object"
+      required: [title, date]
+      properties:
+        title:
+          type: "string"
+        date:
+          type: "string"
+        photoURL:
+          type: "string"
+        notifyCustomers:
+          type: "boolean"
+      example:
+        title: Martini Friday
+        date: 2022-06-14T07:44:37.710Z
+        photoURL: https://media.istockphoto.com/photos/birthday-celebratory-toast-with-string-lights-and-champagne-picture-id1298329918?k=20&m=1298329918&s=612x612&w=0&h=SJjCxNQqYZkXGryXlSCUKfs4mKF8-CzGgpLcNR82E0E=
+        notifyCustomers: true
+    SingleEventObject:
+      type: "object"
+      properties:
+        _id:
+          type: "string"
+          example: 62c2cf3ce807220aab92eca2
+        title:
+          type: "string"
+          example: Martini Friday
+        date:
+          type: "string"
+          example: 2022-06-14T07:44:37.710Z
+        photoURL:
+          type: "string"
+          example: https://media.istockphoto.com/photos/birthday-celebratory-toast-with-string-lights-and-champagne-picture-id1298329918?k=20&m=1298329918&s=612x612&w=0&h=SJjCxNQqYZkXGryXlSCUKfs4mKF8-CzGgpLcNR82E0E=
+        businessId:
+          type: "string"
+          example: 62a7fd82da3296bbc0222501
+        notifyCustomers:
+          type: "boolean"
+          example: true
+        photoURLThumbnails:
+          type: "object"
+          properties:
+            small:
+              type: "string"
+              example: "https://some.small-photo.url/maybe/firebase"
+            medium:
+              type: "string"
+              example: "https://some.medium-photo.url/maybe/firebase"
+            large:
+              type: "string"
+              example: "https://some.large-photo.url/maybe/firebase"
+security:
+  - bearerAuth: []

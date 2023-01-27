@@ -39,6 +39,10 @@ export const appErrors = {
         invalid_credentials: new AppError({
             code: 1202,
             message: "Your credentials are incorrect"
+        }),
+        exists: new AppError({
+            code: 1203,
+            message: "Email or Phone number already exists"
         })
     },
     auth: {
@@ -58,6 +62,10 @@ export const appErrors = {
             code: 1400,
             statusCode: 404,
             message: "Contact not found"
+        }),
+        exists: new AppError({
+            code: 1401,
+            message: "Email or Phone number already exist among your contacts"
         })
     }
 };

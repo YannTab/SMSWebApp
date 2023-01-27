@@ -76,12 +76,15 @@ export const editContactController = async (req: Request, res: Response, next: N
         }
 
         const updated_count = await editContact(data, { id: Number(id), UserId: req.customData!.user.id! });
+        if (!updated_count?.[0]) {
+            throw [appErrors.contact.not_found]
+        }
         res.status(200).json({
             success: true,
             message: "Contact(s) updated successfully",
             data: {
                 updated_count: updated_count?.[0] || 0,
-                contact: await Contact.findByPk(id)
+                contact: await getContact({ id: Number(id), UserId: req.customData!.user.id! })
             }
         });
     } catch (error) {
@@ -93,6 +96,10 @@ export const deleteContactController = async (req: Request, res: Response, next:
     try {
         const { id } = req.params;
         const deleted_count = await deleteContact({ id: Number(id), UserId: req.customData!.user.id! });
+
+        if (!deleted_count) {
+            throw [appErrors.contact.not_found]
+        }
 
         res.status(200).json({
             success: true,

@@ -3,7 +3,7 @@ import { Contact } from "../../models/Contact"
 export const saveContact = async (contact: any) => {
   const savedContact = await Contact.create(contact);
   console.log(contact.firstName + ' has been created');
-  return saveContact;
+  return savedContact;
 }
 export const getContact = async (searchParam: any) => {
   const contact = await Contact.findOne({ where: searchParam });

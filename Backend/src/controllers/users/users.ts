@@ -7,6 +7,7 @@ import { saveUser, editUser, deleteUser, getUser, getAllUsers, findUser } from "
 import { schemaValidator } from "../../utils/schemaValidator";
 import { signCredentials } from "../../services/auth/sign-credentials";
 import { deleteUserToken } from "../../services/user-token/delete-user-token";
+import { Op } from "sequelize";
 
 import { Request } from "../../custom-types";
 
@@ -15,6 +16,17 @@ export const saveUserController = async (req: Request, res: Response, next: Next
         const { data, errors } = schemaValidator.validate(req.body as User, UserCreateSchema);
         if (errors.length > 0) {
             throw errors;
+        }
+
+        if (data.email || data.phoneNumber) {
+            const existsUser = await findUser({ [Op.or]: [
+                ...data.email && [{email: data.email}],
+                ...data.phoneNumber && [{phonenumber: data.phoneNumber}]
+            ]})
+
+            if (existsUser != null) {
+                throw [appErrors.user.exists]
+            }
         }
         const user = await saveUser(data);
 
@@ -83,6 +95,7 @@ export const editUserController = async (req: Request, res: Response, next: Next
             throw errors;
         }
         const updatedCount = await editUser(data, req.customData!.user.id!);
+
         res.status(200).json({
             success: true,
             message: "User updated successfully",
@@ -102,7 +115,7 @@ export const deleteUserController = async (req: Request, res: Response, next: Ne
         const deletedCount = await deleteUser(Number(req.customData!.user.id!));
         res.json({
             success: true,
-            message: "User deleted successfully",
+            message: "Account successfully closed",
             data: {
                 deleted_count: deletedCount
             }

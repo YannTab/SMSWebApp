@@ -72,6 +72,16 @@ User.prototype.isCorrectPassword = function (password: string) {
     return this.password === hash;
 };
 
+// Add instance method to hide password and salt before returning to frontend
+User.prototype.toJSON = function () {
+    let pojo = {...this.get()};
+
+
+    delete pojo.password;
+    delete pojo.salt;
+    return pojo;
+}
+
 //User to Messages One to Many
 User.hasMany(Message, { foreignKey: 'UserId' })
 Message.belongsTo(User)
