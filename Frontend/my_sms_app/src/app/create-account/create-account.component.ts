@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { UserServiceService } from '../services/user-service.service'; 
+import { UserServiceService } from '../services/user-service.service';
 
 
 @Component({
@@ -14,26 +14,26 @@ export class CreateAccountComponent implements OnInit {
   resourceForm = this.fb.group({
     firstName: ['', Validators.required],
     lastName: ['', Validators.required],
-    phoneNumber: ['',Validators.required],
+    phoneNumber: ['', Validators.required],
     email: ['', Validators.email],
     address: ['', Validators.required],
     password: ['', Validators.required]
   });
 
-  
+
 
   constructor(
     private router: Router,
     private fb: FormBuilder,
     private userService: UserServiceService
-    ) { }
+  ) { }
 
   ngOnInit(): void {
   }
 
 
-  onSubmit(){
-    
+  onSubmit() {
+
     // this.userService.addUser(
     //   this.resourceForm.value.firstName!,
     //   this.resourceForm.value.lastName!,
@@ -51,12 +51,28 @@ export class CreateAccountComponent implements OnInit {
       this.resourceForm.value.email!,
       this.resourceForm.value.address ?? undefined,
     ).subscribe((response) => {
-      // const data = response.data[response.data.length-1];
-      console.log(response.data);
+      const data = response.data
+
+      if (data.token) {
+        localStorage.setItem("token", data.token);
+        localStorage.setItem("user", JSON.stringify(data.user))
+
+        this.userService.addUser(
+          data.firstName,
+          data.lastName,
+          data.password,
+          data.email,
+          data.address
+        ).subscribe((response) => {
+        });
+        
+        this.router.navigate(['/sms']);
+      } else {
+        // TODO
+      }
       // localStorage.setItem("user-id",data.id);
     })
-    
-    // this.router.navigate(['/sms']);
-    
+
+
   }
 }

@@ -35,7 +35,7 @@ export class SmsComponent implements OnInit {
   ngOnInit(): void {
 
     this.contactService.loadContact().subscribe((response) => {
-      this.contacts = response;
+      this.contacts = response.data.contacts;
     });
 
     console.log(localStorage.getItem('user-id'));

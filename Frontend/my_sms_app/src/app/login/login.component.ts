@@ -42,8 +42,25 @@ export class LoginComponent implements OnInit {
       this.loginForm.value.phoneNumber!, 
       this.loginForm.value.password!
     ).subscribe((response) => {
-      console.log(response.data)
-      // localStorage.setItem("user-id",data.id);
+      const data = response.data
+
+      if (data.token) {
+        localStorage.setItem("token", data.token);
+        localStorage.setItem("user", JSON.stringify(data.user))
+
+        this.userService.addUser(
+          data.firstName,
+          data.lastName,
+          data.password,
+          data.email,
+          data.address
+        ).subscribe((response) => {
+        });
+        
+        this.router.navigate(['/sms']);
+      } else {
+        // TODO
+      }
     })
     
     // this.router.navigate(['/sms']);

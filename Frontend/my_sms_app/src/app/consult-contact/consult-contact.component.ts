@@ -52,7 +52,7 @@ export class ConsultContactComponent implements OnInit {
   ngOnInit(): void {
     
     this.contactService.loadContact().subscribe((response) => {
-      this.contacts = response;
+      this.contacts = response.data.contacts;
     });
 
   }

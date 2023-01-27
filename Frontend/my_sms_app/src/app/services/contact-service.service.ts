@@ -12,22 +12,27 @@ interface ContactData {
 
 }
 
+const token = localStorage.getItem("token");
+
 const httpOptions = {
-  headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
+  headers: new HttpHeaders({ 
+    'Content-Type': 'application/json',
+    'Authorization': 'Bearer ' + token
+  }),
 };
 
+const host = 'http://localhost:8081';
 @Injectable({
   providedIn: 'root'
 })
 
 
 
-
 export class ContactServiceService {
 
-  addContactUrl = 'http://localhost:8081/contacts/save';
-  loadContactUrl = 'http://localhost:8081/contacts';
-  deleteContactUrl = 'http://localhost:8081/contacts/delete/';
+  addContactUrl = host + '/contacts';
+  loadContactUrl = host + '/contacts';
+  deleteContactUrl = host + '/contacts';
   
   constructor(
     private http: HttpClient,
@@ -51,13 +56,13 @@ export class ContactServiceService {
   }
 
   loadContact(): Observable<any> {
-    return this.http.get(this.loadContactUrl);
+    return this.http.get(this.loadContactUrl, httpOptions);
   }
 
   deleteContact(
     Id: string,
   ): Observable<any> {
-    return this.http.get(this.deleteContactUrl + Id, httpOptions);
+    return this.http.delete(this.deleteContactUrl + Id, httpOptions);
   }
   
 }
