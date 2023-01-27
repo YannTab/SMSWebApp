@@ -34,21 +34,29 @@ export class CreateAccountComponent implements OnInit {
 
   onSubmit(){
     
-    this.userService.addUser(
+    // this.userService.addUser(
+    //   this.resourceForm.value.firstName!,
+    //   this.resourceForm.value.lastName!,
+    //   this.resourceForm.value.password!,
+    //   this.resourceForm.value.email!,
+    //   this.resourceForm.value.address!,
+    // ).subscribe((response) => {
+    // });
+
+    this.userService.signupUser(
+      this.resourceForm.value.phoneNumber!,
+      this.resourceForm.value.password!,
       this.resourceForm.value.firstName!,
       this.resourceForm.value.lastName!,
-      this.resourceForm.value.password!,
       this.resourceForm.value.email!,
-      this.resourceForm.value.address!,
+      this.resourceForm.value.address ?? undefined,
     ).subscribe((response) => {
-    });
-
-    this.userService.getAllUser().subscribe((response) => {
-      const data = response.data[response.data.length-1];
-      localStorage.setItem("user-id",data.id);
+      // const data = response.data[response.data.length-1];
+      console.log(response.data);
+      // localStorage.setItem("user-id",data.id);
     })
     
-    this.router.navigate(['/sms']);
+    // this.router.navigate(['/sms']);
     
   }
 }

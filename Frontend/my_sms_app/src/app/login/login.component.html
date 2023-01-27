@@ -8,13 +8,13 @@
             <mat-toolbar class="title d-flex justify-content-center align-items-center mb-4">
                 <span>Welcome</span>
             </mat-toolbar>
-            <form novalidate class=" p-1">
+            <form novalidate class=" p-1" [formGroup]='loginForm' (ngSubmit)="login()">
                 <div class="form-floating mb-3">
-                    <input type="tel" class="form-control" id="floatingTel" placeholder="65454545">
+                    <input type="tel" class="form-control" id="floatingTel" placeholder="Enter your phone Number" formControlName="phoneNumber">
                     <label for="floatingTel">Phone number</label>
                 </div>
                 <div class="form-floating mb-3">
-                    <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
+                    <input type="password" class="form-control" id="floatingPassword" placeholder="Password" formControlName="password">
                     <label for="floatingPassword">Password</label>
                 </div>
                 <a class="mb-3 d-flex justify-content-end align-items-center" (click)="recoverPassword()">Forgot Password?</a>

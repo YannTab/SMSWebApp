@@ -47,7 +47,7 @@ export const UserGetTokenSchema: Schema = {
         type: "string",
         required: true
     },
-    email: {
+    phoneNumber: {
         type: "string",
         required: true
     }

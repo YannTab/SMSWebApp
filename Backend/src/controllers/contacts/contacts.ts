@@ -51,12 +51,12 @@ export const getContactController = async (req: Request, res: Response, next: Ne
     }
 }
 
-export const getContactbyUserIdController = async (req: Request, res: Response, next: NextFunction) => {
-    const { id } = req.params;
-    const contactsofuser = await getContactByUserId(Number(id));
-    res.json(contactsofuser)
-    next()
-}
+// export const getContactbyUserIdController = async (req: Request, res: Response, next: NextFunction) => {
+//     const { id } = req.params;
+//     const contactsofuser = await getContact({id: Number(id));
+//     res.json(contactsofuser)
+//     next()
+// }
 
 export const getAllContactsController = async (req: Request, res: Response, next: NextFunction) => {
     try {

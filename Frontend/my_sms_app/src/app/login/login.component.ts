@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { UserServiceService } from '../services/user-service.service';
 
 @Component({
   selector: 'app-login',
@@ -12,13 +13,14 @@ export class LoginComponent implements OnInit {
   isValid: boolean = true;
 
   loginForm = this.fb.group({
-    Phonenumber: ['', Validators.required],
+    phoneNumber: ['', Validators.required],
     password: ['', Validators.required],
   });
 
   constructor(
     private fb: FormBuilder,
     private router: Router,
+    private userService: UserServiceService
   ) {}
 
   public ngOnInit(): void {}
@@ -35,4 +37,15 @@ export class LoginComponent implements OnInit {
     this.router.navigate(['/sms'])
   }
 
+  login(){
+    this.userService.loginUser(
+      this.loginForm.value.phoneNumber!, 
+      this.loginForm.value.password!
+    ).subscribe((response) => {
+      console.log(response.data)
+      // localStorage.setItem("user-id",data.id);
+    })
+    
+    // this.router.navigate(['/sms']);
+  }
 }
