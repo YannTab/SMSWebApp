@@ -41,7 +41,7 @@ const ELEMENT_DATA: Contact[] = [
 export class ConsultContactComponent implements OnInit {
 
   displayedColumns: string[] = ['id', 'name', 'number', 'email', 'actions'];
-  public contacts = [];
+  public contacts:any = [];
   @ViewChild('paginator') paginator!: MatPaginator;
   @ViewChild(MatSort) matSort!: MatSort;
 

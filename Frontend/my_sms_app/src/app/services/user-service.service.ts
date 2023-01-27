@@ -15,9 +15,9 @@ interface UserData {
 
 interface SmsData {
   msg: String;
-  destinator: number;
   ContactId: number;
   UserId: number;
+  destinator:String;
 }
 
 const httpOptions = {
@@ -64,13 +64,14 @@ export class UserServiceService {
   sendSms(
     msg: String,
     ContactId: number,
-    userId: number
+    userId: number,
+    destinator:String
   ): Observable<any> {
     const smsData: SmsData = {
       msg: msg,
-      destinator: ContactId,
       ContactId: ContactId,
-      UserId: userId
+      UserId: userId,
+      destinator:destinator
 
      };
     console.log(smsData);

@@ -31,7 +31,7 @@ export class ConsultSmsComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.userService.takeSms(1).subscribe((response) => {
+    this.userService.takeSms(2).subscribe((response) => {
       this.dataSource = response;
       console.log(response)
     })

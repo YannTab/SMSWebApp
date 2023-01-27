@@ -35,11 +35,11 @@ export class CreateAccountComponent implements OnInit {
   onSubmit(){
     
     this.userService.addUser(
-      this.resourceForm.value.firstName,
-      this.resourceForm.value.lastName,
-      this.resourceForm.value.password,
-      this.resourceForm.value.email,
-      this.resourceForm.value.address,
+      this.resourceForm.value.firstName!,
+      this.resourceForm.value.lastName!,
+      this.resourceForm.value.password!,
+      this.resourceForm.value.email!,
+      this.resourceForm.value.address!,
     ).subscribe((response) => {
     });
 
