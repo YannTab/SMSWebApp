@@ -27,7 +27,7 @@ export class ContactServiceService {
 
   addContactUrl = 'http://localhost:8081/contacts/save';
   loadContactUrl = 'http://localhost:8081/contacts';
-
+  deleteContactUrl = 'http://localhost:8081/contacts/delete/';
   
   constructor(
     private http: HttpClient,
@@ -53,6 +53,11 @@ export class ContactServiceService {
   loadContact(): Observable<any> {
     return this.http.get(this.loadContactUrl);
   }
-  
+
+  deleteContact(
+    Id: string,
+  ): Observable<any> {
+    return this.http.get(this.deleteContactUrl + Id, httpOptions);
+  }
   
 }

@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
+import { numbers } from '@material/toolbar/constants';
 import { ContactServiceService } from '../services/contact-service.service';
 
 export interface Contact {
@@ -64,8 +65,15 @@ export class ConsultContactComponent implements OnInit {
     
   }
 
-  deleteContact(contact:any){
-    console.log(contact)
+  deleteContact(id : number): void {
+
+    var idContact = this.contacts[id].id
+
+    this.contactService.deleteContact(idContact)
+    .subscribe((response) => {
+      console.log(response);
+    });
+    location.reload();
   }
 
   editContact(contact:any){

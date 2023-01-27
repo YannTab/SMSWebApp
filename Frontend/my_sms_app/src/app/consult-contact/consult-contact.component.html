@@ -29,9 +29,9 @@
             
             <ng-container matColumnDef="actions">
                 <th mat-header-cell mat-sort-header *matHeaderCellDef> Actions </th>
-                <td mat-cell *matCellDef="let element"> 
+                <td mat-cell *matCellDef="let element ; let i = index"> 
                     <button class="btn btn-primary me-1" (click)="editContact(element)"><span class="fa fa-solid fa-edit"> </span></button>
-                    <button class="btn btn-danger" (click)="deleteContact(element)"><span class="fa fa-solid fa-trash"> </span></button>  
+                    <button class="btn btn-danger" (click)="deleteContact(i)"><span class="fa fa-solid fa-trash"> </span></button>  
                 </td>
             </ng-container>
 

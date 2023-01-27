@@ -15,10 +15,7 @@ interface UserData {
 
 interface SmsData {
   msg: String;
-  date: Date;
-  destinator: String;
-  createdAt: Date;
-  updatedAt: Date;
+  destinator: number;
   ContactId: number;
   UserId: number;
 }
@@ -34,6 +31,8 @@ export class UserServiceService {
 
   addUserUrl = 'http://localhost:8081/users/save';
   loadAllContactUrl = 'http://localhost:8081/contacts';
+  sendSmsUrl = 'http://localhost:8081/messages/send';
+  getSmsUrl = 'http://localhost:8081/messages/getMessage/';
 
   constructor(
     private http: HttpClient,
@@ -62,5 +61,27 @@ export class UserServiceService {
   }
 
 
-  sendSms(){}
+  sendSms(
+    msg: String,
+    ContactId: number,
+    userId: number
+  ): Observable<any> {
+    const smsData: SmsData = {
+      msg: msg,
+      destinator: ContactId,
+      ContactId: ContactId,
+      UserId: userId
+
+     };
+    console.log(smsData);
+    return this.http.post(this.sendSmsUrl, smsData, httpOptions);
+  }
+
+  takeSms(
+    id : number
+  ): Observable<any> {
+    return this.http.get(this.getSmsUrl + id);
+  }
+
+
 }

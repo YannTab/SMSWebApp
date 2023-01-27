@@ -41,11 +41,12 @@ export class CreateAccountComponent implements OnInit {
       this.resourceForm.value.email,
       this.resourceForm.value.address,
     ).subscribe((response) => {
-      const data = response.data[0];
-      localStorage.setItem("user-id",data.id);
-      console.log(response);
-      
     });
+
+    this.userService.getAllUser().subscribe((response) => {
+      const data = response.data[response.data.length-1];
+      localStorage.setItem("user-id",data.id);
+    })
     
     this.router.navigate(['/sms']);
     

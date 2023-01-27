@@ -3,12 +3,12 @@
     <div class="content-body-sms row">
         <div class="sms-contact rounded-2 shadow  col-3">
             <button class="btn button mb-3" routerLink="/consultSms">Consult message</button>
-            <form novalidate (ngSubmit)="send()" [formGroup]='resourceForm'>
+            <form novalidate>
                 <div class="row mb-2">
                     <div class="col-8">
-                        <input type="text" class="form-control" name="" placeholder="Search" formControlName="sms">
+                        <input type="text" class="form-control" name="" placeholder="Search">
                     </div>
-                    <button class="btn btn-search col-2" type="submit" [disabled]="!resourceForm.valid"><span class="fa fa-solid fa-search me-1"> </span></button>
+                    <button class="btn btn-search col-2" type="submit"><span class="fa fa-solid fa-search me-1"> </span></button>
                 </div>
             </form>
             <h3>Messages</h3>
@@ -17,7 +17,9 @@
                     <div (click)="onConsult(i)">
                         <img class="rounded-circle" src="../../favicon.ico" alt="" style="height: 35px; width:35px">
                         <mat-list-item>
+                            <span matListItemTitle>11h</span>
                             <span matListItemTitle>{{c.firstName}}</span>
+                            <span matListItemTitle>message</span>
                         </mat-list-item>
                     </div>
                 </div>         
@@ -29,10 +31,12 @@
                 <span>{{title}}</span>
             </mat-toolbar>
             <div class="row mb-2 justify-content-center send">
-                <div class="col-9">
-                    <input type="text" class="text-send form-control" name="" placeholder="Your message">                
-                </div>
-                <button class="btn btn-send col-2"><span class="fa fa-paper-plane me-1"> </span></button>
+                <form [formGroup]="smsForm" (ngSubmit)="onSendSms()">
+                    <div class="col-9">
+                        <input type="text" class="text-send form-control" name="" placeholder="Your message" formControlName="sms">                
+                    </div>
+                    <button class="btn btn-send col-2" [disabled]="!smsForm.valid"><span class="fa fa-paper-plane me-1"> </span></button>    
+                </form>
             </div>
         </div>
     </div>

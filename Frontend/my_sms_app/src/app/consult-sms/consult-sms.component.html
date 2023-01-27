@@ -4,7 +4,7 @@
         <mat-toolbar class="title mb-1">
             <span>Discussions</span>
         </mat-toolbar>
-        <input class="form-control mb-1 half-width" type="text" placeholder="Ex. Paul" (keyup)="applyFilter($event)">
+        <input class="form-control mb-1 half-width" type="text" placeholder="Ex. Paul">
         <table mat-table matSort matSort matSortActive="created" matSortDisableClear matSortDirection="desc" 
         [dataSource]="dataSource" class="mat-elevation-z8 mb-1">
             <ng-container matColumnDef="id">

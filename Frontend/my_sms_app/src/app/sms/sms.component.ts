@@ -21,8 +21,9 @@ export class SmsComponent implements OnInit {
 
   public contacts = [];
   title : string = '';
+  position : number = 0;
 
-  resourceForm = this.fb.group({
+  smsForm = this.fb.group({
     sms: ['', Validators.required]
   });
 
@@ -38,15 +39,27 @@ export class SmsComponent implements OnInit {
       this.contacts = response;
     });
 
+    console.log(localStorage.getItem('user-id'));
 
   }
 
-  send() {
+  onSendSms() {
+
+    this.userService.sendSms(
+      this.smsForm.value.sms,
+      this.contacts[this.position].id,
+      1
+
+    ).subscribe((response) => {
+      console.log(response);
+    })
+
 
   }
 
   onConsult(id : number) {
     this.title = this.contacts[id].firstName;
+    this.position = id;
   }
 
 }
